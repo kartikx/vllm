@@ -3,14 +3,24 @@ set -xe
 
 # Models to run
 MODELS=(
-    "Qwen/Qwen3-0.6B"
+    "meta-llama/Llama-3.1-8B"
 )
 
-# Number of prefill and decode instances to create
-NUM_PREFILL_INSTANCES=${NUM_PREFILL_INSTANCES:-1} # Default to 1
-NUM_DECODE_INSTANCES=${NUM_DECODE_INSTANCES:-1}   # Default to 1
-PREFILLER_TP_SIZE=${PREFILLER_TP_SIZE:-1}
-DECODER_TP_SIZE=${DECODER_TP_SIZE:-1}
+PREFILLER_TP_SIZE=1
+DECODER_TP_SIZE=1
+
+# Where results are stored, update if you want fresh results that don't over-write previous ones.
+RESULT_DIR="results/8B-A100"
+
+# Benchmark configuration - (prefill, decode) instance pairs
+PD_RATIO=("1 1" "2 1" "3 1")
+
+# Input and output lengths for benchmarks
+# TODO - these should always have reliable defaults.
+INPUT_LENS=(1000)
+OUTPUT_LENS=(100)
+NUM_PROMPTS=(25)
+RPS=(2)
 
 # Find the git repository root directory
 GIT_ROOT=$(git rev-parse --show-toplevel)
@@ -31,8 +41,9 @@ wait_for_server() {
 
 # Function to clean up previous instances
 cleanup_instances() {
-    echo "Cleaning up any running vLLM instances..."
+    echo "Cleaning up any running vLLM instances and proxy server..."
     pkill -f "vllm serve" || true
+    pkill -f "toy_proxy_server.py" || true
     sleep 2
 }
 
@@ -56,11 +67,66 @@ get_num_gpus() {
     fi
 }
 
-# Function to run tests for a specific model
-run_tests_for_model() {
+run_bench() {
     local model_name=$1
+    local prefill_instances=$2
+    local decode_instances=$3
+
+    # Use just the size suffix (e.g., 8B) for filenames
+    local short_model_name="${model_name##*/}"
+    local safe_model_name="${short_model_name##*-}"
+
+    # Use global INPUT_LENS and OUTPUT_LENS variables
+    for input_len in "${INPUT_LENS[@]}"; do
+        for output_len in "${OUTPUT_LENS[@]}"; do
+            for num_prompts in "${NUM_PROMPTS[@]}"; do
+                local result_dir=$RESULT_DIR
+                # Add timestamp to the result file name
+                local timestamp=$(date +%Y%m%d.%H%M%S)
+                local result_file="benchmark-${safe_model_name}-${prefill_instances}P${decode_instances}D-${input_len}-${output_len}-${timestamp}.log"
+                local full_path="${result_dir}/${result_file}"
+
+                # Ensure the result directory exists
+                if [ ! -d "$result_dir" ]; then
+                    mkdir -p "$result_dir"
+                fi
+                
+                # Skip if result file already exists
+                # Should never happen because we now associate timestamps.
+                # if [ -f "$full_path" ]; then
+                    # echo "Result file already exists: $full_path - skipping benchmark"
+                    # continue
+                # fi
+                
+                # Measure the time taken for benchmarking
+                local start_time=$(date +%s)
+
+                vllm bench serve --port 8192 --seed $(date +%s) \
+                    --model $model_name \
+                    --dataset-name random --random-input-len $input_len --random-output-len $output_len \
+                    --num-prompts $num_prompts --request-rate $RPS --save-result --result-dir $result_dir --result-filename $result_file
+
+                # Append test-specific metadata to the log file
+                # Ensure the log file contains valid JSON with appended metadata
+                tmp_file="${full_path}.tmp"
+                jq ". + {\"rps\": $RPS, \"burstiness\": 1.0, \"num_prompts\": $num_prompts}" "$full_path" > "$tmp_file" && mv "$tmp_file" "$full_path"
+
+                local end_time=$(date +%s)
+                local elapsed_time=$((end_time - start_time))
+                echo "Benchmarking completed in $elapsed_time seconds."
+                done
+            done
+        done
+    }
+
+# Function to run tests for a specific model
+benchmark_model () {
+    local model_name=$1
+    local prefill_instances=$2
+    local decode_instances=$3
+
     echo "================================"
-    echo "Testing model: $model_name"
+    echo "Benchmarking model: $model_name in PD Config [$prefill_instances $decode_instances]"
     echo "================================"
 
     # Get model-specific arguments
@@ -156,6 +222,9 @@ run_tests_for_model() {
         wait_for_server $PORT
     done
 
+    # Measure the time taken to start all Prefill and Decode servers
+    local start_time=$(date +%s)
+
     # Build the command for the proxy server with all the hosts and ports
     PROXY_CMD="python ${GIT_ROOT}/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192"
 
@@ -171,27 +240,52 @@ run_tests_for_model() {
     echo "Starting proxy server with command: $PROXY_CMD"
     $PROXY_CMD &
 
+    local end_time=$(date +%s)
+    local elapsed_time=$((end_time - start_time))
+    echo "All Prefill and Decode servers started in $elapsed_time seconds."
+
     # Wait for the proxy to start
     sleep 5
+
+    warm_up_server "$model_name"
 
     # Run lm eval for this model
     # echo "Running tests for $model_name"
     # TEST_MODEL=$model_name python -m pytest -s -x ${GIT_ROOT}/tests/v1/kv_connector/nixl_integration/test_accuracy.py
+    run_bench "$model_name" "$prefill_instances" "$decode_instances"
 
-    cd ../../../benchmarks/
+    # Clean up before running next model
+    cleanup_instances
+    sleep 3
+}
+
+# Function to warm up the server before benchmarking
+warm_up_server() {
+    local model_name=$1
+
+    echo "Warming up the server with 10 requests..."
     vllm bench serve --port 8192 --seed $(date +%s) \
         --model $model_name \
-        --dataset-name random --random-input-len 7500 --random-output-len 200 \
-        --num-prompts 10 --burstiness 100 --request-rate 2 | tee benchmark.log
+        --dataset-name random --random-input-len 500 --random-output-len 100 \
+        --num-prompts 10 --request-rate 2
+}
 
-        # Clean up before running next model
-        cleanup_instances
-        sleep 3
-    }
+# Function to run benchmarks for different (prefill, decode) configurations
+run_benchmark_scenarios() {
+    for cfg in "${PD_RATIO[@]}"; do
+        set -- $cfg
+        export NUM_PREFILL_INSTANCES=$1
+        export NUM_DECODE_INSTANCES=$2
+        echo "================================"
+        echo "Running with $NUM_PREFILL_INSTANCES prefill and $NUM_DECODE_INSTANCES decode instances"
+        echo "================================"
+        for model in "${MODELS[@]}"; do
+            benchmark_model  "$model" "$NUM_PREFILL_INSTANCES" "$NUM_DECODE_INSTANCES"
+        done
+    done
+}
 
-# Run tests for each model
-for model in "${MODELS[@]}"; do
-    run_tests_for_model "$model"
-done
+# Run benchmarks for different (prefill, decode) configurations
+run_benchmark_scenarios
 
 echo "All tests completed!"

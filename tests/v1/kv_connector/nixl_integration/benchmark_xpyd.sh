@@ -154,10 +154,7 @@ benchmark_model () {
         # Build the command with or without model-specific args
         BASE_CMD="CUDA_VISIBLE_DEVICES=$GPU_ID VLLM_NIXL_SIDE_CHANNEL_PORT=$SIDE_CHANNEL_PORT vllm serve $model_name \
             --port $PORT \
-            --max-num-seqs 256 \
-            --trust-remote-code \
             --gpu-memory-utilization 0.9 \
-            --enforce-eager \
             --kv-transfer-config '{\"kv_connector\":\"NixlConnector\",\"kv_role\":\"kv_both\"}'"
 
         if [ -n "$model_args" ]; then
@@ -188,10 +185,7 @@ benchmark_model () {
         BASE_CMD="CUDA_VISIBLE_DEVICES=$GPU_ID VLLM_NIXL_SIDE_CHANNEL_PORT=$SIDE_CHANNEL_PORT vllm serve $model_name \
             --port $PORT \
             --max-num-batched-tokens $DECODE_MAX_NUM_BATCHED_TOKENS \
-            --max-num-seqs 256 \
-            --trust-remote-code \
             --gpu-memory-utilization 0.9 \
-            --enforce-eager \
             --kv-transfer-config '{\"kv_connector\":\"NixlConnector\",\"kv_role\":\"kv_both\"}'"
 
         if [ -n "$model_args" ]; then

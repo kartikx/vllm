@@ -11,12 +11,9 @@ RESULT_DIR=${RESULT_DIR:-"results/8B-A100"}
 PD_RATIO_LIST=${PD_RATIO_LIST:-"1,1 2,1 3,1"}
 
 # Input and output lengths for benchmarks
-# TODO - these should always have reliable defaults.
-# TODO - take these as env vars so that you can construct multiple slurm jobs
-INPUT_LENS=${INPUT_LENS:-"500"}
-OUTPUT_LENS=${OUTPUT_LENS:-"100"}
-NUM_PROMPTS=${NUM_PROMPTS:-"100"}
-RPS=${RPS:-"5"}
+INPUT_OUTPUT_LIST=${INPUT_OUTPUT_LIST:-"100,100"}
+NUM_PROMPTS=${NUM_PROMPTS_LIST:-"100"}
+RPS_LIST=${RPS_LIST:-"5"}
 
 # Default value for DECODE_MAX_NUM_BATCHED_TOKENS
 DECODE_MAX_NUM_BATCHED_TOKENS=${DECODE_MAX_NUM_BATCHED_TOKENS:-2048}
@@ -76,9 +73,17 @@ run_bench() {
     local safe_model_name="${short_model_name##*-}"
 
     # Use global INPUT_LENS and OUTPUT_LENS variables
-    for input_len in "${INPUT_LENS[@]}"; do
-        for output_len in "${OUTPUT_LENS[@]}"; do
-            for num_prompts in "${NUM_PROMPTS[@]}"; do
+    IFS=',' read -ra NUM_PROMPTS_ARRAY <<< "$NUM_PROMPTS_LIST"
+    IFS=',' read -ra RPS_ARRAY <<< "$RPS_LIST"
+
+    echo "NUM_PROMPTS_ARRAY: $NUM_PROMPTS_ARRAY"
+    echo "RPS_ARRAY: $RPS_ARRAY"
+
+    for input_output_len in $INPUT_OUTPUT_LIST; do
+        IFS="," read -r input_len output_len <<< $input_output_len 
+        for num_prompts in "${NUM_PROMPTS_ARRAY[@]}"; do
+            for rps in "${RPS_ARRAY[@]}"; do
+                echo "$input_len $output_len $num_prompts $rps"
                 local result_dir=$RESULT_DIR
                 # Add timestamp to the result file name
                 local timestamp=$(date +%Y%m%d.%H%M%S)
@@ -90,13 +95,6 @@ run_bench() {
                     mkdir -p "$result_dir"
                 fi
                 
-                # Skip if result file already exists
-                # Should never happen because we now associate timestamps.
-                # if [ -f "$full_path" ]; then
-                    # echo "Result file already exists: $full_path - skipping benchmark"
-                    # continue
-                # fi
-                
                 # Measure the time taken for benchmarking
                 local start_time=$(date +%s)
 
@@ -104,11 +102,7 @@ run_bench() {
                     --model $model_name \
                     --dataset-name random --random-input-len $input_len --random-output-len $output_len \
                     --ignore-eos \
-                    --num-prompts $num_prompts --request-rate $RPS --save-result --result-dir $result_dir --result-filename $result_file
-
-                # Append test-specific metadata to the log file
-                # tmp_file="${full_path}.tmp"
-                # jq ". + {\"rps\": $RPS, \"burstiness\": 1.0, \"num_prompts\": $num_prompts}" "$full_path" > "$tmp_file" && mv "$tmp_file" "$full_path"
+                    --num-prompts $num_prompts --request-rate $rps --save-result --result-dir $result_dir --result-filename $result_file --save-detailed
 
                 local end_time=$(date +%s)
                 local elapsed_time=$((end_time - start_time))
@@ -274,7 +268,7 @@ run_benchmark_scenarios() {
     done
 }
 
-echo "MODELS=$MODELS, PREFILLER_TP_SIZE=$PREFILLER_TP_SIZE, DECODER_TP_SIZE=$DECODER_TP_SIZE, RESULT_DIR=$RESULT_DIR, PD_RATIO_LIST=$PD_RATIO_LIST, INPUT_LENS=$INPUT_LENS, OUTPUT_LENS=$OUTPUT_LENS, NUM_PROMPTS=$NUM_PROMPTS, RPS=$RPS, DECODE_MAX_NUM_BATCHED_TOKENS=$DECODE_MAX_NUM_BATCHED_TOKENS"
+echo "MODELS=$MODELS, PREFILLER_TP_SIZE=$PREFILLER_TP_SIZE, DECODER_TP_SIZE=$DECODER_TP_SIZE, RESULT_DIR=$RESULT_DIR, PD_RATIO_LIST=$PD_RATIO_LIST, INPUT_OUTPUT_LIST=$INPUT_OUTPUT_LIST, NUM_PROMPTS_LIST=$NUM_PROMPTS_LIST, RPS=$RPS_LIST, DECODE_MAX_NUM_BATCHED_TOKENS=$DECODE_MAX_NUM_BATCHED_TOKENS"
 
 # Run benchmarks for different (prefill, decode) configurations
 run_benchmark_scenarios

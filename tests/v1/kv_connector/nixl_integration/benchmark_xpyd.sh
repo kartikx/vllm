@@ -23,8 +23,9 @@ GIT_ROOT=$(git rev-parse --show-toplevel)
 
 SMI_BIN=$(which nvidia-smi || which rocm-smi)
 
-# Trap the SIGINT signal (triggered by Ctrl+C)
-trap 'jobs -pr | xargs -r kill' SIGINT SIGTERM EXIT
+# Trap the SIGINT signal (triggered by Ctrl+C) and ensure cleanup_instances
+# is invoked before killing background jobs. Also handle SIGTERM and EXIT.
+trap 'cleanup_instances; jobs -pr | xargs -r kill' SIGINT SIGTERM EXIT
 
 # Waits for vLLM to start.
 wait_for_server() {
@@ -165,6 +166,11 @@ benchmark_model () {
         PREFILL_PORTS+=($PORT)
     done
 
+    # TODO - server logs should be stored somewhere.
+
+    # TODO - runs can collide (same config, diff rps since rps is not in the file name)
+    # easy solution - if file exists, sleep and try again with the new timestamp.
+
     # Start decode instances
     for i in $(seq 0 $((NUM_DECODE_INSTANCES-1))); do
         # Calculate GPU ID - we'll distribute across available GPUs, starting from after prefill GPUs
@@ -233,6 +239,10 @@ benchmark_model () {
     sleep 5
 
     warm_up_server "$model_name"
+
+    echo "server is warmed up ... waiting now"
+
+    # sleep 300_000_000
 
     # Run lm eval for this model
     # echo "Running tests for $model_name"

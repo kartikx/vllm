@@ -1,0 +1,189 @@
+[1;36m(APIServer pid=797203)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=797197)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=797197)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=797203)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[W925 12:48:53.870603050 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W925 12:48:53.878483481 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=797642)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=797638)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=797642)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:11<00:22, 11.24s/it]
+[1;36m(EngineCore_DP0 pid=797638)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:10<00:21, 10.88s/it]
+[1;36m(EngineCore_DP0 pid=797642)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:29<00:15, 15.47s/it]
+[1;36m(EngineCore_DP0 pid=797638)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:29<00:15, 15.32s/it]
+[1;36m(EngineCore_DP0 pid=797638)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:51<00:00, 18.28s/it]
+[1;36m(EngineCore_DP0 pid=797642)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:51<00:00, 18.38s/it]
+[1;36m(EngineCore_DP0 pid=797642)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:51<00:00, 17.17s/it]
+[1;36m(EngineCore_DP0 pid=797642)[0;0m 
+[1;36m(EngineCore_DP0 pid=797638)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:51<00:00, 17.05s/it]
+[1;36m(EngineCore_DP0 pid=797638)[0;0m 
+[1;36m(APIServer pid=797197)[0;0m INFO:     Started server process [797197]
+[1;36m(APIServer pid=797197)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=797197)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=797203)[0;0m INFO:     Started server process [797203]
+[1;36m(APIServer pid=797203)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=797203)[0;0m INFO:     Application startup complete.
+INFO:     Started server process [798628]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8192 (Press CTRL+C to quit)
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:06 elapsed, 14:19:31 remaining
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:05<00:46,  5.21s/it] 20%|██        | 2/10 [00:06<00:24,  3.12s/it] 30%|███       | 3/10 [00:07<00:14,  2.13s/it] 40%|████      | 4/10 [00:10<00:14,  2.37s/it] 50%|█████     | 5/10 [00:10<00:08,  1.62s/it] 60%|██████    | 6/10 [00:11<00:04,  1.12s/it]100%|██████████| 10/10 [00:11<00:00,  2.16it/s]100%|██████████| 10/10 [00:11<00:00,  1.15s/it]
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:06 elapsed, 18:15:36 remaining
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:12<20:19, 12.32s/it]  3%|▎         | 3/100 [00:12<05:23,  3.33s/it]  4%|▍         | 4/100 [00:13<03:45,  2.35s/it]  6%|▌         | 6/100 [00:13<01:57,  1.25s/it] 10%|█         | 10/100 [00:14<00:54,  1.66it/s] 13%|█▎        | 13/100 [00:15<00:45,  1.89it/s] 14%|█▍        | 14/100 [00:22<02:19,  1.62s/it] 15%|█▌        | 15/100 [00:23<02:09,  1.53s/it] 16%|█▌        | 16/100 [00:24<01:46,  1.27s/it] 17%|█▋        | 17/100 [00:24<01:25,  1.03s/it] 19%|█▉        | 19/100 [00:24<00:52,  1.54it/s] 23%|██▎       | 23/100 [00:24<00:26,  2.89it/s] 26%|██▌       | 26/100 [00:27<00:37,  1.97it/s] 27%|██▋       | 27/100 [00:34<01:53,  1.55s/it] 28%|██▊       | 28/100 [00:35<01:36,  1.33s/it] 29%|██▉       | 29/100 [00:35<01:19,  1.12s/it] 30%|███       | 30/100 [00:35<01:06,  1.05it/s] 36%|███▌      | 36/100 [00:36<00:25,  2.48it/s] 39%|███▉      | 39/100 [00:38<00:28,  2.12it/s] 40%|████      | 40/100 [00:46<01:28,  1.48s/it] 42%|████▏     | 42/100 [00:46<01:06,  1.14s/it] 43%|████▎     | 43/100 [00:47<00:58,  1.02s/it] 49%|████▉     | 49/100 [00:47<00:23,  2.15it/s] 51%|█████     | 51/100 [00:47<00:19,  2.57it/s] 52%|█████▏    | 52/100 [00:50<00:33,  1.44it/s] 53%|█████▎    | 53/100 [00:57<01:19,  1.69s/it] 55%|█████▌    | 55/100 [00:58<00:57,  1.27s/it] 56%|█████▌    | 56/100 [00:58<00:46,  1.06s/it] 62%|██████▏   | 62/100 [00:59<00:20,  1.87it/s] 64%|██████▍   | 64/100 [00:59<00:16,  2.23it/s] 65%|██████▌   | 65/100 [01:03<00:30,  1.16it/s] 66%|██████▌   | 66/100 [01:09<00:58,  1.72s/it] 68%|██████▊   | 68/100 [01:09<00:38,  1.21s/it] 69%|██████▉   | 69/100 [01:09<00:32,  1.06s/it] 75%|███████▌  | 75/100 [01:10<00:11,  2.23it/s] 77%|███████▋  | 77/100 [01:10<00:08,  2.76it/s] 78%|███████▊  | 78/100 [01:13<00:16,  1.36it/s] 79%|███████▉  | 79/100 [01:17<00:27,  1.29s/it] 81%|████████  | 81/100 [01:17<00:17,  1.07it/s] 82%|████████▏ | 82/100 [01:18<00:14,  1.23it/s] 88%|████████▊ | 88/100 [01:18<00:04,  2.70it/s] 90%|█████████ | 90/100 [01:18<00:03,  3.31it/s] 91%|█████████ | 91/100 [01:22<00:06,  1.43it/s] 92%|█████████▏| 92/100 [01:25<00:08,  1.09s/it] 94%|█████████▍| 94/100 [01:25<00:04,  1.30it/s]100%|██████████| 100/100 [01:25<00:00,  1.17it/s]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [798628]
+[rank0]:[W925 12:53:23.161009906 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W925 12:53:23.214491877 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua035:797642:0:797642] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f1b15197830)
+[gpua035:797638:0:797638] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f4ce8092830)
+[1;36m(APIServer pid=797203)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=797203)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=797203)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=797197)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=797197)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=797197)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=799708)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=799703)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=799714)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=799703)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=799708)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=799714)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[W925 12:54:57.873217028 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W925 12:54:57.085879588 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=800183)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=800187)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[W925 12:55:13.177581955 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=800187)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:13<00:27, 13.69s/it]
+[1;36m(EngineCore_DP0 pid=800183)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:14<00:28, 14.13s/it]
+[1;36m(EngineCore_DP0 pid=800204)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=800204)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:16<00:33, 16.94s/it]
+[1;36m(EngineCore_DP0 pid=800183)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:42<00:22, 22.35s/it]
+[1;36m(EngineCore_DP0 pid=800187)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:41<00:22, 22.22s/it]
+[1;36m(EngineCore_DP0 pid=800204)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:45<00:23, 23.82s/it]
+[1;36m(EngineCore_DP0 pid=800187)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:13<00:00, 26.54s/it]
+[1;36m(EngineCore_DP0 pid=800187)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:13<00:00, 24.52s/it]
+[1;36m(EngineCore_DP0 pid=800187)[0;0m 
+[1;36m(EngineCore_DP0 pid=800183)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:13<00:00, 26.62s/it]
+[1;36m(EngineCore_DP0 pid=800183)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:13<00:00, 24.64s/it]
+[1;36m(EngineCore_DP0 pid=800183)[0;0m 
+[1;36m(APIServer pid=799708)[0;0m INFO:     Started server process [799708]
+[1;36m(APIServer pid=799708)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=799703)[0;0m INFO:     Started server process [799703]
+[1;36m(APIServer pid=799703)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=799708)[0;0m INFO:     Application startup complete.
+[1;36m(EngineCore_DP0 pid=800204)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:13<00:00, 25.91s/it]
+[1;36m(EngineCore_DP0 pid=800204)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:13<00:00, 24.66s/it]
+[1;36m(EngineCore_DP0 pid=800204)[0;0m 
+[1;36m(APIServer pid=799703)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=799714)[0;0m INFO:     Started server process [799714]
+[1;36m(APIServer pid=799714)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=799714)[0;0m INFO:     Application startup complete.
+INFO:     Started server process [801340]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8192 (Press CTRL+C to quit)
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:09 elapsed, 38:43:31 remaining
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:10<01:34, 10.53s/it] 20%|██        | 2/10 [00:11<00:38,  4.76s/it] 30%|███       | 3/10 [00:11<00:18,  2.65s/it] 50%|█████     | 5/10 [00:11<00:06,  1.23s/it] 70%|███████   | 7/10 [00:11<00:02,  1.34it/s] 80%|████████  | 8/10 [00:12<00:01,  1.58it/s] 90%|█████████ | 9/10 [00:12<00:00,  1.99it/s]100%|██████████| 10/10 [00:13<00:00,  1.26it/s]100%|██████████| 10/10 [00:13<00:00,  1.40s/it]
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:08 elapsed, 18:04:59 remaining
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:16<27:51, 16.88s/it]  4%|▍         | 4/100 [00:17<05:28,  3.42s/it]  6%|▌         | 6/100 [00:18<03:11,  2.03s/it]  8%|▊         | 8/100 [00:18<02:07,  1.39s/it]  9%|▉         | 9/100 [00:19<01:51,  1.22s/it] 12%|█▏        | 12/100 [00:20<01:03,  1.38it/s] 13%|█▎        | 13/100 [00:21<01:17,  1.12it/s] 14%|█▍        | 14/100 [00:33<04:27,  3.11s/it] 15%|█▌        | 15/100 [00:33<03:36,  2.54s/it] 17%|█▋        | 17/100 [00:34<02:19,  1.68s/it] 18%|█▊        | 18/100 [00:34<01:54,  1.40s/it] 21%|██        | 21/100 [00:35<01:07,  1.17it/s] 25%|██▌       | 25/100 [00:37<00:49,  1.50it/s] 26%|██▌       | 26/100 [00:40<01:14,  1.00s/it] 27%|██▋       | 27/100 [00:51<03:19,  2.73s/it] 29%|██▉       | 29/100 [00:52<02:14,  1.90s/it] 30%|███       | 30/100 [00:52<01:53,  1.62s/it] 33%|███▎      | 33/100 [00:53<01:06,  1.00it/s] 34%|███▍      | 34/100 [00:53<01:01,  1.08it/s] 39%|███▉      | 39/100 [00:56<00:44,  1.36it/s] 40%|████      | 40/100 [01:07<02:11,  2.18s/it] 42%|████▏     | 42/100 [01:08<01:34,  1.64s/it] 43%|████▎     | 43/100 [01:08<01:21,  1.43s/it] 46%|████▌     | 46/100 [01:09<00:49,  1.09it/s] 47%|████▋     | 47/100 [01:10<00:45,  1.16it/s] 52%|█████▏    | 52/100 [01:12<00:31,  1.53it/s] 53%|█████▎    | 53/100 [01:24<01:42,  2.19s/it] 54%|█████▍    | 54/100 [01:25<01:29,  1.94s/it] 55%|█████▌    | 55/100 [01:25<01:13,  1.63s/it] 56%|█████▌    | 56/100 [01:25<00:59,  1.36s/it] 58%|█████▊    | 58/100 [01:26<00:39,  1.07it/s] 59%|█████▉    | 59/100 [01:27<00:36,  1.11it/s] 60%|██████    | 60/100 [01:27<00:33,  1.20it/s] 65%|██████▌   | 65/100 [01:28<00:15,  2.24it/s] 66%|██████▌   | 66/100 [01:36<00:51,  1.52s/it] 67%|██████▋   | 67/100 [01:37<00:45,  1.39s/it] 68%|██████▊   | 68/100 [01:37<00:38,  1.19s/it] 70%|███████   | 70/100 [01:37<00:25,  1.19it/s] 71%|███████   | 71/100 [01:38<00:21,  1.34it/s] 72%|███████▏  | 72/100 [01:38<00:17,  1.63it/s] 73%|███████▎  | 73/100 [01:38<00:14,  1.87it/s] 78%|███████▊  | 78/100 [01:40<00:10,  2.09it/s] 79%|███████▉  | 79/100 [01:47<00:31,  1.48s/it] 80%|████████  | 80/100 [01:48<00:24,  1.24s/it] 81%|████████  | 81/100 [01:48<00:19,  1.04s/it] 83%|████████▎ | 83/100 [01:48<00:12,  1.33it/s] 84%|████████▍ | 84/100 [01:49<00:10,  1.57it/s] 85%|████████▌ | 85/100 [01:49<00:08,  1.77it/s] 86%|████████▌ | 86/100 [01:49<00:06,  2.10it/s] 91%|█████████ | 91/100 [01:52<00:04,  1.91it/s] 92%|█████████▏| 92/100 [01:58<00:11,  1.39s/it] 94%|█████████▍| 94/100 [01:58<00:05,  1.01it/s] 96%|█████████▌| 96/100 [01:58<00:02,  1.40it/s] 98%|█████████▊| 98/100 [01:58<00:01,  1.94it/s]100%|██████████| 100/100 [01:58<00:00,  1.19s/it]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [801340]
+[rank0]:[W925 13:00:53.706291563 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W925 13:00:53.725123027 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W925 13:00:53.730445721 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua035:800187:0:800187] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fd2bdf59830)
+[gpua035:800183:0:800183] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f24c0581830)
+[gpua035:800204:0:800204] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7feaa8d91830)
+[1;36m(APIServer pid=799703)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=799703)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=799703)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=799708)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=799708)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=799708)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=799714)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=799714)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=799714)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=802767)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=802757)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=802762)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=802773)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=802767)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=802757)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=802762)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=802773)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[W925 13:03:00.923442298 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W925 13:03:03.025598331 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=803637)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[W925 13:03:05.879188038 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W925 13:03:05.285347991 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=803643)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=803657)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=803663)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=803637)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:22<00:45, 22.64s/it]
+[1;36m(EngineCore_DP0 pid=803643)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:22<00:44, 22.22s/it]
+[1;36m(EngineCore_DP0 pid=803657)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:21<00:43, 21.99s/it]
+[1;36m(EngineCore_DP0 pid=803663)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:21<00:43, 21.82s/it]
+[1;36m(EngineCore_DP0 pid=803637)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [01:00<00:31, 31.70s/it]
+[1;36m(EngineCore_DP0 pid=803643)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:58<00:30, 30.66s/it]
+[1;36m(EngineCore_DP0 pid=803657)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:58<00:30, 30.52s/it]
+[1;36m(EngineCore_DP0 pid=803663)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:58<00:30, 30.78s/it]
+[1;36m(EngineCore_DP0 pid=803637)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:42<00:00, 36.24s/it]
+[1;36m(EngineCore_DP0 pid=803637)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:42<00:00, 34.11s/it]
+[1;36m(EngineCore_DP0 pid=803637)[0;0m 
+[1;36m(EngineCore_DP0 pid=803643)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:39<00:00, 35.06s/it]
+[1;36m(EngineCore_DP0 pid=803643)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:39<00:00, 33.02s/it]
+[1;36m(EngineCore_DP0 pid=803643)[0;0m 
+[1;36m(EngineCore_DP0 pid=803657)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:36<00:00, 33.84s/it]
+[1;36m(EngineCore_DP0 pid=803657)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:36<00:00, 32.09s/it]
+[1;36m(EngineCore_DP0 pid=803657)[0;0m 
+[1;36m(EngineCore_DP0 pid=803663)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:36<00:00, 34.10s/it]
+[1;36m(EngineCore_DP0 pid=803663)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:36<00:00, 32.31s/it]
+[1;36m(EngineCore_DP0 pid=803663)[0;0m 
+[1;36m(APIServer pid=802762)[0;0m INFO:     Started server process [802762]
+[1;36m(APIServer pid=802762)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=802767)[0;0m INFO:     Started server process [802767]
+[1;36m(APIServer pid=802767)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=802757)[0;0m INFO:     Started server process [802757]
+[1;36m(APIServer pid=802757)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=802762)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=802757)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=802767)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=802773)[0;0m INFO:     Started server process [802773]
+[1;36m(APIServer pid=802773)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=802773)[0;0m INFO:     Application startup complete.
+INFO:     Started server process [805267]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8192 (Press CTRL+C to quit)
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:11 elapsed, 10:45:20 remaining
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:05<00:48,  5.41s/it] 20%|██        | 2/10 [00:13<00:54,  6.76s/it] 30%|███       | 3/10 [00:13<00:26,  3.83s/it] 40%|████      | 4/10 [00:13<00:14,  2.42s/it] 50%|█████     | 5/10 [00:14<00:08,  1.78s/it] 60%|██████    | 6/10 [00:14<00:05,  1.30s/it] 70%|███████   | 7/10 [00:15<00:03,  1.10s/it] 90%|█████████ | 9/10 [00:15<00:00,  1.49it/s]100%|██████████| 10/10 [00:15<00:00,  1.59s/it]
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:11 elapsed, 13:57:28 remaining
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:20<33:38, 20.39s/it]  2%|▏         | 2/100 [00:20<14:16,  8.74s/it]  3%|▎         | 3/100 [00:21<08:11,  5.07s/it] 10%|█         | 10/100 [00:23<01:40,  1.12s/it] 13%|█▎        | 13/100 [00:26<01:30,  1.04s/it] 14%|█▍        | 14/100 [00:41<04:19,  3.02s/it] 15%|█▌        | 15/100 [00:44<04:10,  2.94s/it] 23%|██▎       | 23/100 [00:44<01:24,  1.10s/it] 26%|██▌       | 26/100 [01:00<02:39,  2.16s/it] 27%|██▋       | 27/100 [01:04<02:51,  2.35s/it] 28%|██▊       | 28/100 [01:05<02:34,  2.14s/it] 36%|███▌      | 36/100 [01:07<01:02,  1.02it/s] 39%|███▉      | 39/100 [01:21<01:55,  1.89s/it] 40%|████      | 40/100 [01:27<02:18,  2.31s/it] 41%|████      | 41/100 [01:27<02:05,  2.13s/it] 48%|████▊     | 48/100 [01:29<00:55,  1.06s/it] 52%|█████▏    | 52/100 [01:37<01:06,  1.38s/it] 53%|█████▎    | 53/100 [01:41<01:14,  1.59s/it] 60%|██████    | 60/100 [01:42<00:35,  1.14it/s] 65%|██████▌   | 65/100 [01:49<00:36,  1.05s/it] 66%|██████▌   | 66/100 [01:54<00:47,  1.41s/it] 73%|███████▎  | 73/100 [01:55<00:21,  1.27it/s] 78%|███████▊  | 78/100 [02:01<00:20,  1.08it/s] 79%|███████▉  | 79/100 [02:06<00:27,  1.32s/it] 86%|████████▌ | 86/100 [02:07<00:10,  1.30it/s] 90%|█████████ | 90/100 [02:08<00:05,  1.73it/s] 91%|█████████ | 91/100 [02:13<00:08,  1.02it/s] 92%|█████████▏| 92/100 [02:18<00:12,  1.52s/it]100%|██████████| 100/100 [02:18<00:00,  1.39s/it]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [805267]
+[rank0]:[W925 13:10:13.817927249 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W925 13:10:13.833763462 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W925 13:10:13.868351218 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W925 13:10:13.872785780 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua035:803643:0:803643] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f6201ede830)
+[gpua035:803657:0:803657] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fe1f282d830)
+[gpua035:803663:0:803663] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f7fec48e830)
+[gpua035:803637:0:803637] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ff30f5ff830)
+[1;36m(APIServer pid=802757)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=802757)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=802757)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=802762)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=802762)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=802762)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=802773)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=802773)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=802773)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=802767)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=802767)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=802767)[0;0m INFO:     Application shutdown complete.

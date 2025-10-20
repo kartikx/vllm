@@ -1,0 +1,1264 @@
++ MODELS=("meta-llama/Llama-3.1-8B")
++ PREFILLER_TP_SIZE=1
++ DECODER_TP_SIZE=1
++ RESULT_DIR=results/8B-A100
++ PD_RATIO=("1 1" "2 1" "3 1" "2 2" "1 3")
++ INPUT_LENS=(1000)
++ OUTPUT_LENS=(100)
++ NUM_PROMPTS=(50)
++ RPS=(1)
+++ git rev-parse --show-toplevel
++ GIT_ROOT=/u/kramesh/Code/vllm
+++ which nvidia-smi
+++ alias
+++ eval typeset -f
++++ typeset -f
+++ /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot nvidia-smi
++ SMI_BIN=/usr/bin/nvidia-smi
++ trap 'jobs -pr | xargs -r kill' SIGINT SIGTERM EXIT
++ run_benchmark_scenarios
++ for cfg in "${PD_RATIO[@]}"
++ set -- 1 1
++ export NUM_PREFILL_INSTANCES=1
++ NUM_PREFILL_INSTANCES=1
++ export NUM_DECODE_INSTANCES=1
++ NUM_DECODE_INSTANCES=1
++ echo ================================
++ echo 'Running with 1 prefill and 1 decode instances'
++ echo ================================
++ for model in "${MODELS[@]}"
++ benchmark_model meta-llama/Llama-3.1-8B 1 1
++ local model_name=meta-llama/Llama-3.1-8B
++ local prefill_instances=1
++ local decode_instances=1
++ echo ================================
++ echo 'Benchmarking model: meta-llama/Llama-3.1-8B in PD Config [1 1]'
++ echo ================================
+++ get_model_args meta-llama/Llama-3.1-8B
+++ local model_name=meta-llama/Llama-3.1-8B
+++ local extra_args=
+++ [[ meta-llama/Llama-3.1-8B == \d\e\e\p\s\e\e\k\-\a\i\/\d\e\e\p\s\e\e\k\-\v\l\2\-\t\i\n\y ]]
+++ echo ''
++ local model_args=
++ PREFILL_HOSTS=()
++ PREFILL_PORTS=()
++ DECODE_HOSTS=()
++ DECODE_PORTS=()
+++ date +%s
++ local start_time=1758751801
+++ seq 0 0
++ for i in $(seq 0 $((NUM_PREFILL_INSTANCES-1)))
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=0
++ PORT=8100
++ SIDE_CHANNEL_PORT=5559
++ echo 'Starting prefill instance 0 on GPU 0, port 8100'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ PREFILL_HOSTS+=("localhost")
++ PREFILL_PORTS+=($PORT)
+++ CUDA_VISIBLE_DEVICES=0
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5559
+++ vllm serve meta-llama/Llama-3.1-8B --port 8100 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ seq 0 0
++ for i in $(seq 0 $((NUM_DECODE_INSTANCES-1)))
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=1
++ PORT=8200
++ SIDE_CHANNEL_PORT=5659
++ echo 'Starting decode instance 0 on GPU 1, port 8200'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ DECODE_HOSTS+=("localhost")
++ DECODE_PORTS+=($PORT)
++ for PORT in "${PREFILL_PORTS[@]}"
++ echo 'Waiting for prefill instance on port 8100 to start...'
++ wait_for_server 8100
++ local port=8100
++ timeout 1200 bash -c '
+    until curl -s localhost:8100/v1/completions > /dev/null; do
+        sleep 1
+    done'
+++ CUDA_VISIBLE_DEVICES=1
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5659
+++ vllm serve meta-llama/Llama-3.1-8B --port 8200 --tensor-parallel-size 1 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+[1;36m(APIServer pid=1103620)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1103614)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1103614)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1103620)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[W924 17:11:26.027054230 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W924 17:11:26.027094055 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=1104100)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1104101)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1104100)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:24<01:14, 24.94s/it]
+[1;36m(EngineCore_DP0 pid=1104101)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:24<01:14, 24.75s/it]
+[1;36m(EngineCore_DP0 pid=1104101)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:48<00:48, 24.27s/it]
+[1;36m(EngineCore_DP0 pid=1104100)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:48<00:48, 24.39s/it]
+[1;36m(EngineCore_DP0 pid=1104100)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [01:12<00:24, 24.07s/it]
+[1;36m(EngineCore_DP0 pid=1104101)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [01:12<00:24, 24.02s/it]
+[1;36m(EngineCore_DP0 pid=1104100)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:19<00:00, 17.27s/it]
+[1;36m(EngineCore_DP0 pid=1104100)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:19<00:00, 19.87s/it]
+[1;36m(EngineCore_DP0 pid=1104100)[0;0m 
+[1;36m(EngineCore_DP0 pid=1104101)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:19<00:00, 17.24s/it]
+[1;36m(EngineCore_DP0 pid=1104101)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:19<00:00, 19.81s/it]
+[1;36m(EngineCore_DP0 pid=1104101)[0;0m 
+[1;36m(APIServer pid=1103620)[0;0m INFO:     Started server process [1103620]
+[1;36m(APIServer pid=1103620)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1103614)[0;0m INFO:     Started server process [1103614]
+[1;36m(APIServer pid=1103614)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1103620)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=1103614)[0;0m INFO:     Application startup complete.
++ return 0
++ for PORT in "${DECODE_PORTS[@]}"
++ echo 'Waiting for decode instance on port 8200 to start...'
++ wait_for_server 8200
++ local port=8200
++ timeout 1200 bash -c '
+    until curl -s localhost:8200/v1/completions > /dev/null; do
+        sleep 1
+    done'
++ return 0
++ PROXY_CMD='python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192'
++ PROXY_CMD+=' --prefiller-hosts localhost'
++ PROXY_CMD+=' --prefiller-ports 8100'
++ PROXY_CMD+=' --decoder-hosts localhost'
++ PROXY_CMD+=' --decoder-ports 8200'
++ echo 'Starting proxy server with command: python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192 --prefiller-hosts localhost --prefiller-ports 8100 --decoder-hosts localhost --decoder-ports 8200'
++ python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192 --prefiller-hosts localhost --prefiller-ports 8100 --decoder-hosts localhost --decoder-ports 8200
+++ date +%s
++ local end_time=1758752015
++ local elapsed_time=214
++ echo 'All Prefill and Decode servers started in 214 seconds.'
++ sleep 5
+INFO:     Started server process [1105201]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8192 (Press CTRL+C to quit)
++ warm_up_server meta-llama/Llama-3.1-8B
++ local model_name=meta-llama/Llama-3.1-8B
++ echo 'Warming up the server with 10 requests...'
+++ date +%s
++ vllm bench serve --port 8192 --seed 1758752020 --model meta-llama/Llama-3.1-8B --dataset-name random --random-input-len 500 --random-output-len 100 --num-prompts 10 --request-rate 2
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:06 elapsed, 24:27:08 remaining
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:06<01:00,  6.71s/it] 20%|██        | 2/10 [00:07<00:23,  2.96s/it] 30%|███       | 3/10 [00:07<00:13,  1.98s/it] 60%|██████    | 6/10 [00:08<00:02,  1.40it/s] 70%|███████   | 7/10 [00:08<00:01,  1.59it/s] 80%|████████  | 8/10 [00:09<00:01,  1.17it/s] 90%|█████████ | 9/10 [00:10<00:00,  1.48it/s]100%|██████████| 10/10 [00:10<00:00,  1.93it/s]100%|██████████| 10/10 [00:10<00:00,  1.02s/it]
++ run_bench meta-llama/Llama-3.1-8B 1 1
++ local model_name=meta-llama/Llama-3.1-8B
++ local prefill_instances=1
++ local decode_instances=1
++ local short_model_name=Llama-3.1-8B
++ local safe_model_name=8B
++ for input_len in "${INPUT_LENS[@]}"
++ for output_len in "${OUTPUT_LENS[@]}"
++ for num_prompts in "${NUM_PROMPTS[@]}"
++ local result_dir=results/8B-A100
+++ date +%Y%m%d.%H%M%S
++ local timestamp=20250924.171441
++ local result_file=benchmark-8B-1P1D-1000-100-20250924.171441.log
++ local full_path=results/8B-A100/benchmark-8B-1P1D-1000-100-20250924.171441.log
++ '[' '!' -d results/8B-A100 ']'
+++ date +%s
++ local start_time=1758752081
+++ date +%s
++ vllm bench serve --port 8192 --seed 1758752081 --model meta-llama/Llama-3.1-8B --dataset-name random --random-input-len 1000 --random-output-len 100 --ignore-eos --num-prompts 50 --request-rate 1 --save-result --result-dir results/8B-A100 --result-filename benchmark-8B-1P1D-1000-100-20250924.171441.log
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:05 elapsed, 11:36:25 remaining
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [00:05<04:31,  5.54s/it]  4%|▍         | 2/50 [00:06<02:08,  2.68s/it]  6%|▌         | 3/50 [00:10<02:33,  3.26s/it]  8%|▊         | 4/50 [00:11<01:57,  2.55s/it] 12%|█▏        | 6/50 [00:11<00:55,  1.27s/it] 14%|█▍        | 7/50 [00:12<00:44,  1.04s/it] 16%|█▌        | 8/50 [00:13<00:50,  1.20s/it] 20%|██        | 10/50 [00:18<01:03,  1.58s/it] 22%|██▏       | 11/50 [00:18<00:50,  1.30s/it] 24%|██▍       | 12/50 [00:19<00:42,  1.11s/it] 26%|██▌       | 13/50 [00:19<00:31,  1.17it/s] 28%|██▊       | 14/50 [00:20<00:33,  1.09it/s] 30%|███       | 15/50 [00:20<00:29,  1.19it/s] 32%|███▏      | 16/50 [00:21<00:22,  1.54it/s] 34%|███▍      | 17/50 [00:21<00:19,  1.73it/s] 36%|███▌      | 18/50 [00:22<00:21,  1.46it/s] 38%|███▊      | 19/50 [00:23<00:27,  1.11it/s] 40%|████      | 20/50 [00:30<01:18,  2.63s/it] 42%|████▏     | 21/50 [00:31<00:58,  2.01s/it] 44%|████▍     | 22/50 [00:31<00:42,  1.50s/it] 46%|████▌     | 23/50 [00:31<00:32,  1.21s/it] 48%|████▊     | 24/50 [00:32<00:24,  1.06it/s] 50%|█████     | 25/50 [00:32<00:18,  1.32it/s] 52%|█████▏    | 26/50 [00:34<00:27,  1.16s/it] 56%|█████▌    | 28/50 [00:34<00:14,  1.49it/s] 58%|█████▊    | 29/50 [00:36<00:17,  1.22it/s] 60%|██████    | 30/50 [00:39<00:27,  1.36s/it] 62%|██████▏   | 31/50 [00:39<00:21,  1.11s/it] 66%|██████▌   | 33/50 [00:39<00:11,  1.42it/s] 70%|███████   | 35/50 [00:41<00:12,  1.22it/s] 72%|███████▏  | 36/50 [00:42<00:11,  1.22it/s] 74%|███████▍  | 37/50 [00:42<00:08,  1.47it/s] 76%|███████▌  | 38/50 [00:43<00:08,  1.39it/s] 78%|███████▊  | 39/50 [00:44<00:06,  1.67it/s] 80%|████████  | 40/50 [00:44<00:05,  1.89it/s] 82%|████████▏ | 41/50 [00:45<00:07,  1.28it/s] 84%|████████▍ | 42/50 [00:46<00:05,  1.48it/s] 86%|████████▌ | 43/50 [00:47<00:05,  1.18it/s] 88%|████████▊ | 44/50 [00:47<00:03,  1.52it/s] 90%|█████████ | 45/50 [00:48<00:02,  1.71it/s] 92%|█████████▏| 46/50 [00:50<00:04,  1.13s/it] 94%|█████████▍| 47/50 [00:51<00:03,  1.09s/it] 96%|█████████▌| 48/50 [00:53<00:02,  1.40s/it] 98%|█████████▊| 49/50 [00:54<00:01,  1.34s/it]100%|██████████| 50/50 [00:55<00:00,  1.04s/it]100%|██████████| 50/50 [00:55<00:00,  1.10s/it]
++ tmp_file=results/8B-A100/benchmark-8B-1P1D-1000-100-20250924.171441.log.tmp
++ jq '. + {"rps": 1, "burstiness": 1.0, "num_prompts": 50}' results/8B-A100/benchmark-8B-1P1D-1000-100-20250924.171441.log
++ mv results/8B-A100/benchmark-8B-1P1D-1000-100-20250924.171441.log.tmp results/8B-A100/benchmark-8B-1P1D-1000-100-20250924.171441.log
+++ date +%s
++ local end_time=1758752188
++ local elapsed_time=107
++ echo 'Benchmarking completed in 107 seconds.'
++ cleanup_instances
++ echo 'Cleaning up any running vLLM instances and proxy server...'
++ pkill -f 'vllm serve'
++ pkill -f toy_proxy_server.py
++ sleep 2
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1105201]
+[rank0]:[W924 17:16:29.918404434 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W924 17:16:29.923620244 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua019:1104100:0:1104100] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ff8f070e830)
+[gpua019:1104101:0:1104101] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f36ac2a9830)
+[1;36m(APIServer pid=1103614)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1103614)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1103614)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1103620)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1103620)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1103620)[0;0m INFO:     Application shutdown complete.
++ sleep 3
++ for cfg in "${PD_RATIO[@]}"
++ set -- 2 1
++ export NUM_PREFILL_INSTANCES=2
++ NUM_PREFILL_INSTANCES=2
++ export NUM_DECODE_INSTANCES=1
++ NUM_DECODE_INSTANCES=1
++ echo ================================
++ echo 'Running with 2 prefill and 1 decode instances'
++ echo ================================
++ for model in "${MODELS[@]}"
++ benchmark_model meta-llama/Llama-3.1-8B 2 1
++ local model_name=meta-llama/Llama-3.1-8B
++ local prefill_instances=2
++ local decode_instances=1
++ echo ================================
++ echo 'Benchmarking model: meta-llama/Llama-3.1-8B in PD Config [2 1]'
++ echo ================================
+++ get_model_args meta-llama/Llama-3.1-8B
+++ local model_name=meta-llama/Llama-3.1-8B
+++ local extra_args=
+++ [[ meta-llama/Llama-3.1-8B == \d\e\e\p\s\e\e\k\-\a\i\/\d\e\e\p\s\e\e\k\-\v\l\2\-\t\i\n\y ]]
+++ echo ''
++ local model_args=
++ PREFILL_HOSTS=()
++ PREFILL_PORTS=()
++ DECODE_HOSTS=()
++ DECODE_PORTS=()
+++ date +%s
++ local start_time=1758752194
+++ seq 0 1
++ for i in $(seq 0 $((NUM_PREFILL_INSTANCES-1)))
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=0
++ PORT=8100
++ SIDE_CHANNEL_PORT=5559
++ echo 'Starting prefill instance 0 on GPU 0, port 8100'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ PREFILL_HOSTS+=("localhost")
++ PREFILL_PORTS+=($PORT)
++ for i in $(seq 0 $((NUM_PREFILL_INSTANCES-1)))
+++ CUDA_VISIBLE_DEVICES=0
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5559
+++ vllm serve meta-llama/Llama-3.1-8B --port 8100 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=1
++ PORT=8101
++ SIDE_CHANNEL_PORT=5560
++ echo 'Starting prefill instance 1 on GPU 1, port 8101'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5560 vllm serve meta-llama/Llama-3.1-8B             --port 8101             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5560 vllm serve meta-llama/Llama-3.1-8B             --port 8101             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5560 vllm serve meta-llama/Llama-3.1-8B             --port 8101             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ PREFILL_HOSTS+=("localhost")
++ PREFILL_PORTS+=($PORT)
+++ CUDA_VISIBLE_DEVICES=1
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5560
+++ vllm serve meta-llama/Llama-3.1-8B --port 8101 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ seq 0 0
++ for i in $(seq 0 $((NUM_DECODE_INSTANCES-1)))
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=2
++ PORT=8200
++ SIDE_CHANNEL_PORT=5659
++ echo 'Starting decode instance 0 on GPU 2, port 8200'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ DECODE_HOSTS+=("localhost")
++ DECODE_PORTS+=($PORT)
++ for PORT in "${PREFILL_PORTS[@]}"
++ echo 'Waiting for prefill instance on port 8100 to start...'
++ wait_for_server 8100
++ local port=8100
++ timeout 1200 bash -c '
+    until curl -s localhost:8100/v1/completions > /dev/null; do
+        sleep 1
+    done'
+++ CUDA_VISIBLE_DEVICES=2
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5659
+++ vllm serve meta-llama/Llama-3.1-8B --port 8200 --tensor-parallel-size 1 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+[1;36m(APIServer pid=1106264)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1106269)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1106275)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1106264)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1106269)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1106275)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[W924 17:18:09.324658514 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W924 17:18:09.328291983 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W924 17:18:09.754225511 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=1106759)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1106755)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1106763)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1106759)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:13<00:40, 13.63s/it]
+[1;36m(EngineCore_DP0 pid=1106755)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:13<00:39, 13.32s/it]
+[1;36m(EngineCore_DP0 pid=1106763)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:13<00:39, 13.33s/it]
+[1;36m(EngineCore_DP0 pid=1106763)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:34<00:35, 17.94s/it]
+[1;36m(EngineCore_DP0 pid=1106759)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:35<00:36, 18.37s/it]
+[1;36m(EngineCore_DP0 pid=1106755)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:34<00:36, 18.23s/it]
+[1;36m(EngineCore_DP0 pid=1106755)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:49<00:16, 16.52s/it]
+[1;36m(EngineCore_DP0 pid=1106763)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:49<00:16, 16.47s/it]
+[1;36m(EngineCore_DP0 pid=1106759)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:49<00:16, 16.67s/it]
+[1;36m(EngineCore_DP0 pid=1106759)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:53<00:00, 11.54s/it]
+[1;36m(EngineCore_DP0 pid=1106759)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:53<00:00, 13.41s/it]
+[1;36m(EngineCore_DP0 pid=1106759)[0;0m 
+[1;36m(EngineCore_DP0 pid=1106755)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:53<00:00, 11.52s/it]
+[1;36m(EngineCore_DP0 pid=1106755)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:53<00:00, 13.33s/it]
+[1;36m(EngineCore_DP0 pid=1106755)[0;0m 
+[1;36m(EngineCore_DP0 pid=1106763)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:53<00:00, 11.60s/it]
+[1;36m(EngineCore_DP0 pid=1106763)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:53<00:00, 13.34s/it]
+[1;36m(EngineCore_DP0 pid=1106763)[0;0m 
+[1;36m(APIServer pid=1106275)[0;0m INFO:     Started server process [1106275]
+[1;36m(APIServer pid=1106275)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1106269)[0;0m INFO:     Started server process [1106269]
+[1;36m(APIServer pid=1106269)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1106264)[0;0m INFO:     Started server process [1106264]
+[1;36m(APIServer pid=1106264)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1106275)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=1106269)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=1106264)[0;0m INFO:     Application startup complete.
++ return 0
++ for PORT in "${PREFILL_PORTS[@]}"
++ echo 'Waiting for prefill instance on port 8101 to start...'
++ wait_for_server 8101
++ local port=8101
++ timeout 1200 bash -c '
+    until curl -s localhost:8101/v1/completions > /dev/null; do
+        sleep 1
+    done'
++ return 0
++ for PORT in "${DECODE_PORTS[@]}"
++ echo 'Waiting for decode instance on port 8200 to start...'
++ wait_for_server 8200
++ local port=8200
++ timeout 1200 bash -c '
+    until curl -s localhost:8200/v1/completions > /dev/null; do
+        sleep 1
+    done'
++ return 0
++ PROXY_CMD='python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192'
++ PROXY_CMD+=' --prefiller-hosts localhost localhost'
++ PROXY_CMD+=' --prefiller-ports 8100 8101'
++ PROXY_CMD+=' --decoder-hosts localhost'
++ PROXY_CMD+=' --decoder-ports 8200'
++ echo 'Starting proxy server with command: python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192 --prefiller-hosts localhost localhost --prefiller-ports 8100 8101 --decoder-hosts localhost --decoder-ports 8200'
++ python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192 --prefiller-hosts localhost localhost --prefiller-ports 8100 8101 --decoder-hosts localhost --decoder-ports 8200
+++ date +%s
++ local end_time=1758752413
++ local elapsed_time=219
++ echo 'All Prefill and Decode servers started in 219 seconds.'
++ sleep 5
+INFO:     Started server process [1108284]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8192 (Press CTRL+C to quit)
++ warm_up_server meta-llama/Llama-3.1-8B
++ local model_name=meta-llama/Llama-3.1-8B
++ echo 'Warming up the server with 10 requests...'
+++ date +%s
++ vllm bench serve --port 8192 --seed 1758752418 --model meta-llama/Llama-3.1-8B --dataset-name random --random-input-len 500 --random-output-len 100 --num-prompts 10 --request-rate 2
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:08 elapsed, 18:37:31 remaining
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:08<01:19,  8.82s/it] 20%|██        | 2/10 [00:09<00:30,  3.84s/it] 30%|███       | 3/10 [00:09<00:14,  2.14s/it] 40%|████      | 4/10 [00:09<00:08,  1.40s/it] 50%|█████     | 5/10 [00:10<00:07,  1.41s/it] 60%|██████    | 6/10 [00:11<00:04,  1.08s/it] 70%|███████   | 7/10 [00:11<00:02,  1.20it/s] 90%|█████████ | 9/10 [00:11<00:00,  2.19it/s]100%|██████████| 10/10 [00:11<00:00,  1.19s/it]
++ run_bench meta-llama/Llama-3.1-8B 2 1
++ local model_name=meta-llama/Llama-3.1-8B
++ local prefill_instances=2
++ local decode_instances=1
++ local short_model_name=Llama-3.1-8B
++ local safe_model_name=8B
++ for input_len in "${INPUT_LENS[@]}"
++ for output_len in "${OUTPUT_LENS[@]}"
++ for num_prompts in "${NUM_PROMPTS[@]}"
++ local result_dir=results/8B-A100
+++ date +%Y%m%d.%H%M%S
++ local timestamp=20250924.172125
++ local result_file=benchmark-8B-2P1D-1000-100-20250924.172125.log
++ local full_path=results/8B-A100/benchmark-8B-2P1D-1000-100-20250924.172125.log
++ '[' '!' -d results/8B-A100 ']'
+++ date +%s
++ local start_time=1758752485
+++ date +%s
++ vllm bench serve --port 8192 --seed 1758752485 --model meta-llama/Llama-3.1-8B --dataset-name random --random-input-len 1000 --random-output-len 100 --ignore-eos --num-prompts 50 --request-rate 1 --save-result --result-dir results/8B-A100 --result-filename benchmark-8B-2P1D-1000-100-20250924.172125.log
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:06 elapsed, 9:39:56 remaining
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [00:09<07:46,  9.52s/it]  4%|▍         | 2/50 [00:09<03:14,  4.05s/it]  6%|▌         | 3/50 [00:11<02:15,  2.89s/it]  8%|▊         | 4/50 [00:12<01:38,  2.14s/it] 10%|█         | 5/50 [00:15<01:51,  2.47s/it] 12%|█▏        | 6/50 [00:15<01:14,  1.70s/it] 14%|█▍        | 7/50 [00:16<01:04,  1.50s/it] 16%|█▌        | 8/50 [00:16<00:44,  1.07s/it] 20%|██        | 10/50 [00:17<00:34,  1.16it/s] 22%|██▏       | 11/50 [00:20<00:46,  1.19s/it] 24%|██▍       | 12/50 [00:22<00:57,  1.50s/it] 26%|██▌       | 13/50 [00:23<00:47,  1.29s/it] 28%|██▊       | 14/50 [00:24<00:43,  1.22s/it] 34%|███▍      | 17/50 [00:25<00:25,  1.32it/s] 36%|███▌      | 18/50 [00:26<00:27,  1.17it/s] 38%|███▊      | 19/50 [00:29<00:42,  1.38s/it] 40%|████      | 20/50 [00:30<00:36,  1.20s/it] 42%|████▏     | 21/50 [00:31<00:36,  1.27s/it] 44%|████▍     | 22/50 [00:35<00:51,  1.85s/it] 46%|████▌     | 23/50 [00:35<00:38,  1.42s/it] 48%|████▊     | 24/50 [00:37<00:37,  1.45s/it] 50%|█████     | 25/50 [00:37<00:29,  1.18s/it] 52%|█████▏    | 26/50 [00:38<00:22,  1.05it/s] 54%|█████▍    | 27/50 [00:38<00:17,  1.30it/s] 64%|██████▍   | 32/50 [00:39<00:06,  2.74it/s] 68%|██████▊   | 34/50 [00:42<00:10,  1.46it/s] 70%|███████   | 35/50 [00:42<00:09,  1.63it/s] 72%|███████▏  | 36/50 [00:42<00:08,  1.73it/s] 76%|███████▌  | 38/50 [00:44<00:07,  1.62it/s] 78%|███████▊  | 39/50 [00:47<00:12,  1.09s/it] 82%|████████▏ | 41/50 [00:49<00:09,  1.07s/it] 84%|████████▍ | 42/50 [00:49<00:07,  1.13it/s] 86%|████████▌ | 43/50 [00:51<00:08,  1.19s/it] 90%|█████████ | 45/50 [00:52<00:04,  1.22it/s] 92%|█████████▏| 46/50 [00:53<00:03,  1.23it/s] 94%|█████████▍| 47/50 [00:53<00:02,  1.40it/s] 96%|█████████▌| 48/50 [00:55<00:01,  1.04it/s] 98%|█████████▊| 49/50 [00:56<00:01,  1.12s/it]100%|██████████| 50/50 [00:56<00:00,  1.19it/s]100%|██████████| 50/50 [00:56<00:00,  1.14s/it]
++ tmp_file=results/8B-A100/benchmark-8B-2P1D-1000-100-20250924.172125.log.tmp
++ jq '. + {"rps": 1, "burstiness": 1.0, "num_prompts": 50}' results/8B-A100/benchmark-8B-2P1D-1000-100-20250924.172125.log
++ mv results/8B-A100/benchmark-8B-2P1D-1000-100-20250924.172125.log.tmp results/8B-A100/benchmark-8B-2P1D-1000-100-20250924.172125.log
+++ date +%s
++ local end_time=1758752596
++ local elapsed_time=111
++ echo 'Benchmarking completed in 111 seconds.'
++ cleanup_instances
++ echo 'Cleaning up any running vLLM instances and proxy server...'
++ pkill -f 'vllm serve'
++ pkill -f toy_proxy_server.py
++ sleep 2
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1108284]
+[rank0]:[W924 17:23:17.148131098 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W924 17:23:17.167641392 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W924 17:23:17.173794043 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua019:1106755:0:1106755] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fbfd0186830)
+[gpua019:1106759:0:1106759] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fa3fec8e830)
+[gpua019:1106763:0:1106763] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fc7e2d95830)
+[1;36m(APIServer pid=1106264)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1106264)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1106264)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1106269)[0;0m INFO:     Shutting down
++ sleep 3
+[1;36m(APIServer pid=1106269)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1106269)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1106275)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1106275)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1106275)[0;0m INFO:     Application shutdown complete.
++ for cfg in "${PD_RATIO[@]}"
++ set -- 3 1
++ export NUM_PREFILL_INSTANCES=3
++ NUM_PREFILL_INSTANCES=3
++ export NUM_DECODE_INSTANCES=1
++ NUM_DECODE_INSTANCES=1
++ echo ================================
++ echo 'Running with 3 prefill and 1 decode instances'
++ echo ================================
++ for model in "${MODELS[@]}"
++ benchmark_model meta-llama/Llama-3.1-8B 3 1
++ local model_name=meta-llama/Llama-3.1-8B
++ local prefill_instances=3
++ local decode_instances=1
++ echo ================================
++ echo 'Benchmarking model: meta-llama/Llama-3.1-8B in PD Config [3 1]'
++ echo ================================
+++ get_model_args meta-llama/Llama-3.1-8B
+++ local model_name=meta-llama/Llama-3.1-8B
+++ local extra_args=
+++ [[ meta-llama/Llama-3.1-8B == \d\e\e\p\s\e\e\k\-\a\i\/\d\e\e\p\s\e\e\k\-\v\l\2\-\t\i\n\y ]]
+++ echo ''
++ local model_args=
++ PREFILL_HOSTS=()
++ PREFILL_PORTS=()
++ DECODE_HOSTS=()
++ DECODE_PORTS=()
+++ date +%s
++ local start_time=1758752602
+++ seq 0 2
++ for i in $(seq 0 $((NUM_PREFILL_INSTANCES-1)))
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=0
++ PORT=8100
++ SIDE_CHANNEL_PORT=5559
++ echo 'Starting prefill instance 0 on GPU 0, port 8100'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ PREFILL_HOSTS+=("localhost")
++ PREFILL_PORTS+=($PORT)
++ for i in $(seq 0 $((NUM_PREFILL_INSTANCES-1)))
+++ CUDA_VISIBLE_DEVICES=0
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5559
+++ vllm serve meta-llama/Llama-3.1-8B --port 8100 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=1
++ PORT=8101
++ SIDE_CHANNEL_PORT=5560
++ echo 'Starting prefill instance 1 on GPU 1, port 8101'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5560 vllm serve meta-llama/Llama-3.1-8B             --port 8101             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5560 vllm serve meta-llama/Llama-3.1-8B             --port 8101             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5560 vllm serve meta-llama/Llama-3.1-8B             --port 8101             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ PREFILL_HOSTS+=("localhost")
++ PREFILL_PORTS+=($PORT)
++ for i in $(seq 0 $((NUM_PREFILL_INSTANCES-1)))
+++ CUDA_VISIBLE_DEVICES=1
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5560
+++ vllm serve meta-llama/Llama-3.1-8B --port 8101 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=2
++ PORT=8102
++ SIDE_CHANNEL_PORT=5561
++ echo 'Starting prefill instance 2 on GPU 2, port 8102'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5561 vllm serve meta-llama/Llama-3.1-8B             --port 8102             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5561 vllm serve meta-llama/Llama-3.1-8B             --port 8102             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5561 vllm serve meta-llama/Llama-3.1-8B             --port 8102             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ PREFILL_HOSTS+=("localhost")
++ PREFILL_PORTS+=($PORT)
+++ CUDA_VISIBLE_DEVICES=2
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5561
+++ vllm serve meta-llama/Llama-3.1-8B --port 8102 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ seq 0 0
++ for i in $(seq 0 $((NUM_DECODE_INSTANCES-1)))
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=3
++ PORT=8200
++ SIDE_CHANNEL_PORT=5659
++ echo 'Starting decode instance 0 on GPU 3, port 8200'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=3 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=3 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=3 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ DECODE_HOSTS+=("localhost")
++ DECODE_PORTS+=($PORT)
++ for PORT in "${PREFILL_PORTS[@]}"
++ echo 'Waiting for prefill instance on port 8100 to start...'
++ wait_for_server 8100
++ local port=8100
++ timeout 1200 bash -c '
+    until curl -s localhost:8100/v1/completions > /dev/null; do
+        sleep 1
+    done'
+++ CUDA_VISIBLE_DEVICES=3
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5659
+++ vllm serve meta-llama/Llama-3.1-8B --port 8200 --tensor-parallel-size 1 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+[1;36m(APIServer pid=1109355)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1109360)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1109365)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1109371)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1109360)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1109355)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1109365)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1109371)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[W924 17:25:17.748735459 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W924 17:25:18.404835323 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=1109875)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1109869)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1109875)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:13<00:41, 13.69s/it]
+[1;36m(EngineCore_DP0 pid=1109869)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:13<00:39, 13.27s/it]
+[W924 17:25:46.891976508 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=1109875)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:28<00:28, 14.34s/it]
+[1;36m(EngineCore_DP0 pid=1109869)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:27<00:28, 14.13s/it]
+[W924 17:25:51.991228390 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=1109907)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1109914)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1109907)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:18<00:55, 18.57s/it]
+[1;36m(EngineCore_DP0 pid=1109914)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:18<00:54, 18.10s/it]
+[1;36m(EngineCore_DP0 pid=1109869)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [01:06<00:25, 25.30s/it]
+[1;36m(EngineCore_DP0 pid=1109875)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [01:07<00:25, 25.50s/it]
+[1;36m(EngineCore_DP0 pid=1109907)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:38<00:38, 19.26s/it]
+[1;36m(EngineCore_DP0 pid=1109914)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:37<00:37, 18.92s/it]
+[1;36m(EngineCore_DP0 pid=1109869)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:15<00:00, 18.88s/it]
+[1;36m(EngineCore_DP0 pid=1109869)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:15<00:00, 18.91s/it]
+[1;36m(EngineCore_DP0 pid=1109869)[0;0m 
+[1;36m(EngineCore_DP0 pid=1109875)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:16<00:00, 19.02s/it]
+[1;36m(EngineCore_DP0 pid=1109875)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:16<00:00, 19.09s/it]
+[1;36m(EngineCore_DP0 pid=1109875)[0;0m 
+[1;36m(EngineCore_DP0 pid=1109907)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:57<00:19, 19.40s/it]
+[1;36m(EngineCore_DP0 pid=1109914)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:56<00:19, 19.08s/it]
+[1;36m(EngineCore_DP0 pid=1109907)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:03<00:00, 14.01s/it]
+[1;36m(EngineCore_DP0 pid=1109907)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:03<00:00, 15.91s/it]
+[1;36m(EngineCore_DP0 pid=1109907)[0;0m 
+[1;36m(EngineCore_DP0 pid=1109914)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:02<00:00, 13.80s/it]
+[1;36m(EngineCore_DP0 pid=1109914)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:02<00:00, 15.64s/it]
+[1;36m(EngineCore_DP0 pid=1109914)[0;0m 
+[1;36m(APIServer pid=1109360)[0;0m INFO:     Started server process [1109360]
+[1;36m(APIServer pid=1109360)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1109355)[0;0m INFO:     Started server process [1109355]
+[1;36m(APIServer pid=1109355)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1109360)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=1109355)[0;0m INFO:     Application startup complete.
++ return 0
++ for PORT in "${PREFILL_PORTS[@]}"
++ echo 'Waiting for prefill instance on port 8101 to start...'
++ wait_for_server 8101
++ local port=8101
++ timeout 1200 bash -c '
+    until curl -s localhost:8101/v1/completions > /dev/null; do
+        sleep 1
+    done'
++ return 0
++ for PORT in "${PREFILL_PORTS[@]}"
++ echo 'Waiting for prefill instance on port 8102 to start...'
++ wait_for_server 8102
++ local port=8102
++ timeout 1200 bash -c '
+    until curl -s localhost:8102/v1/completions > /dev/null; do
+        sleep 1
+    done'
+[1;36m(APIServer pid=1109365)[0;0m INFO:     Started server process [1109365]
+[1;36m(APIServer pid=1109365)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1109365)[0;0m INFO:     Application startup complete.
++ return 0
++ for PORT in "${DECODE_PORTS[@]}"
++ echo 'Waiting for decode instance on port 8200 to start...'
++ wait_for_server 8200
++ local port=8200
++ timeout 1200 bash -c '
+    until curl -s localhost:8200/v1/completions > /dev/null; do
+        sleep 1
+    done'
+[1;36m(APIServer pid=1109371)[0;0m INFO:     Started server process [1109371]
+[1;36m(APIServer pid=1109371)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1109371)[0;0m INFO:     Application startup complete.
++ return 0
++ PROXY_CMD='python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192'
++ PROXY_CMD+=' --prefiller-hosts localhost localhost localhost'
++ PROXY_CMD+=' --prefiller-ports 8100 8101 8102'
++ PROXY_CMD+=' --decoder-hosts localhost'
++ PROXY_CMD+=' --decoder-ports 8200'
++ echo 'Starting proxy server with command: python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192 --prefiller-hosts localhost localhost localhost --prefiller-ports 8100 8101 8102 --decoder-hosts localhost --decoder-ports 8200'
++ python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192 --prefiller-hosts localhost localhost localhost --prefiller-ports 8100 8101 8102 --decoder-hosts localhost --decoder-ports 8200
+++ date +%s
++ local end_time=1758752899
++ local elapsed_time=297
++ echo 'All Prefill and Decode servers started in 297 seconds.'
++ sleep 5
+INFO:     Started server process [1111917]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8192 (Press CTRL+C to quit)
++ warm_up_server meta-llama/Llama-3.1-8B
++ local model_name=meta-llama/Llama-3.1-8B
++ echo 'Warming up the server with 10 requests...'
+++ date +%s
++ vllm bench serve --port 8192 --seed 1758752904 --model meta-llama/Llama-3.1-8B --dataset-name random --random-input-len 500 --random-output-len 100 --num-prompts 10 --request-rate 2
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:10 elapsed, 17:01:37 remaining
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:04<00:43,  4.79s/it] 20%|██        | 2/10 [00:11<00:47,  5.97s/it] 30%|███       | 3/10 [00:11<00:23,  3.32s/it] 40%|████      | 4/10 [00:12<00:13,  2.24s/it] 50%|█████     | 5/10 [00:12<00:07,  1.56s/it] 80%|████████  | 8/10 [00:13<00:01,  1.42it/s]100%|██████████| 10/10 [00:13<00:00,  1.68it/s]100%|██████████| 10/10 [00:13<00:00,  1.40s/it]
++ run_bench meta-llama/Llama-3.1-8B 3 1
++ local model_name=meta-llama/Llama-3.1-8B
++ local prefill_instances=3
++ local decode_instances=1
++ local short_model_name=Llama-3.1-8B
++ local safe_model_name=8B
++ for input_len in "${INPUT_LENS[@]}"
++ for output_len in "${OUTPUT_LENS[@]}"
++ for num_prompts in "${NUM_PROMPTS[@]}"
++ local result_dir=results/8B-A100
+++ date +%Y%m%d.%H%M%S
++ local timestamp=20250924.172945
++ local result_file=benchmark-8B-3P1D-1000-100-20250924.172945.log
++ local full_path=results/8B-A100/benchmark-8B-3P1D-1000-100-20250924.172945.log
++ '[' '!' -d results/8B-A100 ']'
+++ date +%s
++ local start_time=1758752985
+++ date +%s
++ vllm bench serve --port 8192 --seed 1758752985 --model meta-llama/Llama-3.1-8B --dataset-name random --random-input-len 1000 --random-output-len 100 --ignore-eos --num-prompts 50 --request-rate 1 --save-result --result-dir results/8B-A100 --result-filename benchmark-8B-3P1D-1000-100-20250924.172945.log
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:08 elapsed, 10:54:27 remaining
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [00:11<09:40, 11.85s/it]  4%|▍         | 2/50 [00:13<04:32,  5.68s/it]  6%|▌         | 3/50 [00:13<02:32,  3.25s/it] 10%|█         | 5/50 [00:14<01:20,  1.78s/it] 14%|█▍        | 7/50 [00:15<00:49,  1.15s/it] 16%|█▌        | 8/50 [00:15<00:39,  1.07it/s] 18%|█▊        | 9/50 [00:16<00:38,  1.07it/s] 20%|██        | 10/50 [00:17<00:37,  1.07it/s] 22%|██▏       | 11/50 [00:18<00:29,  1.33it/s] 24%|██▍       | 12/50 [00:19<00:31,  1.21it/s] 26%|██▌       | 13/50 [00:19<00:26,  1.39it/s] 28%|██▊       | 14/50 [00:19<00:22,  1.59it/s] 30%|███       | 15/50 [00:20<00:25,  1.35it/s] 32%|███▏      | 16/50 [00:26<01:10,  2.08s/it] 34%|███▍      | 17/50 [00:27<01:04,  1.96s/it] 36%|███▌      | 18/50 [00:28<00:46,  1.45s/it] 38%|███▊      | 19/50 [00:28<00:37,  1.21s/it] 40%|████      | 20/50 [00:30<00:36,  1.22s/it] 42%|████▏     | 21/50 [00:30<00:28,  1.02it/s] 46%|████▌     | 23/50 [00:34<00:38,  1.42s/it] 48%|████▊     | 24/50 [00:34<00:28,  1.11s/it] 50%|█████     | 25/50 [00:35<00:25,  1.01s/it] 52%|█████▏    | 26/50 [00:36<00:25,  1.08s/it] 54%|█████▍    | 27/50 [00:41<00:50,  2.19s/it] 56%|█████▌    | 28/50 [00:42<00:41,  1.88s/it] 58%|█████▊    | 29/50 [00:43<00:32,  1.55s/it] 60%|██████    | 30/50 [00:45<00:33,  1.66s/it] 62%|██████▏   | 31/50 [00:46<00:26,  1.40s/it] 64%|██████▍   | 32/50 [00:47<00:22,  1.28s/it] 66%|██████▌   | 33/50 [00:47<00:18,  1.11s/it] 68%|██████▊   | 34/50 [00:51<00:30,  1.90s/it] 70%|███████   | 35/50 [00:51<00:20,  1.39s/it] 72%|███████▏  | 36/50 [00:53<00:23,  1.66s/it] 74%|███████▍  | 37/50 [00:55<00:19,  1.47s/it] 76%|███████▌  | 38/50 [00:55<00:12,  1.08s/it] 80%|████████  | 40/50 [00:56<00:07,  1.28it/s] 84%|████████▍ | 42/50 [00:57<00:05,  1.44it/s] 86%|████████▌ | 43/50 [00:57<00:04,  1.73it/s] 90%|█████████ | 45/50 [00:57<00:02,  2.41it/s] 92%|█████████▏| 46/50 [00:58<00:01,  2.37it/s] 94%|█████████▍| 47/50 [00:58<00:01,  2.61it/s] 96%|█████████▌| 48/50 [00:58<00:00,  2.24it/s]100%|██████████| 50/50 [00:59<00:00,  1.18s/it]
++ tmp_file=results/8B-A100/benchmark-8B-3P1D-1000-100-20250924.172945.log.tmp
++ jq '. + {"rps": 1, "burstiness": 1.0, "num_prompts": 50}' results/8B-A100/benchmark-8B-3P1D-1000-100-20250924.172945.log
++ mv results/8B-A100/benchmark-8B-3P1D-1000-100-20250924.172945.log.tmp results/8B-A100/benchmark-8B-3P1D-1000-100-20250924.172945.log
+++ date +%s
++ local end_time=1758753110
++ local elapsed_time=125
++ echo 'Benchmarking completed in 125 seconds.'
++ cleanup_instances
++ echo 'Cleaning up any running vLLM instances and proxy server...'
++ pkill -f 'vllm serve'
++ pkill -f toy_proxy_server.py
++ sleep 2
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1111917]
+[rank0]:[W924 17:31:51.096933486 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W924 17:31:51.147297694 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W924 17:31:51.157347719 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W924 17:31:51.164271197 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua019:1109869:0:1109869] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fae233f9830)
+[gpua019:1109907:0:1109907] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fc4977cf830)
+[gpua019:1109914:0:1109914] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fdd0ad34830)
+[gpua019:1109875:0:1109875] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f50b05b0830)
++ sleep 3
+[1;36m(APIServer pid=1109360)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1109360)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1109360)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1109371)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1109371)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1109371)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1109365)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1109365)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1109365)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1109355)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1109355)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1109355)[0;0m INFO:     Application shutdown complete.
++ for cfg in "${PD_RATIO[@]}"
++ set -- 2 2
++ export NUM_PREFILL_INSTANCES=2
++ NUM_PREFILL_INSTANCES=2
++ export NUM_DECODE_INSTANCES=2
++ NUM_DECODE_INSTANCES=2
++ echo ================================
++ echo 'Running with 2 prefill and 2 decode instances'
++ echo ================================
++ for model in "${MODELS[@]}"
++ benchmark_model meta-llama/Llama-3.1-8B 2 2
++ local model_name=meta-llama/Llama-3.1-8B
++ local prefill_instances=2
++ local decode_instances=2
++ echo ================================
++ echo 'Benchmarking model: meta-llama/Llama-3.1-8B in PD Config [2 2]'
++ echo ================================
+++ get_model_args meta-llama/Llama-3.1-8B
+++ local model_name=meta-llama/Llama-3.1-8B
+++ local extra_args=
+++ [[ meta-llama/Llama-3.1-8B == \d\e\e\p\s\e\e\k\-\a\i\/\d\e\e\p\s\e\e\k\-\v\l\2\-\t\i\n\y ]]
+++ echo ''
++ local model_args=
++ PREFILL_HOSTS=()
++ PREFILL_PORTS=()
++ DECODE_HOSTS=()
++ DECODE_PORTS=()
+++ date +%s
++ local start_time=1758753116
+++ seq 0 1
++ for i in $(seq 0 $((NUM_PREFILL_INSTANCES-1)))
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=0
++ PORT=8100
++ SIDE_CHANNEL_PORT=5559
++ echo 'Starting prefill instance 0 on GPU 0, port 8100'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ PREFILL_HOSTS+=("localhost")
++ PREFILL_PORTS+=($PORT)
++ for i in $(seq 0 $((NUM_PREFILL_INSTANCES-1)))
+++ CUDA_VISIBLE_DEVICES=0
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5559
+++ vllm serve meta-llama/Llama-3.1-8B --port 8100 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=1
++ PORT=8101
++ SIDE_CHANNEL_PORT=5560
++ echo 'Starting prefill instance 1 on GPU 1, port 8101'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5560 vllm serve meta-llama/Llama-3.1-8B             --port 8101             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5560 vllm serve meta-llama/Llama-3.1-8B             --port 8101             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5560 vllm serve meta-llama/Llama-3.1-8B             --port 8101             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ PREFILL_HOSTS+=("localhost")
++ PREFILL_PORTS+=($PORT)
+++ CUDA_VISIBLE_DEVICES=1
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5560
+++ vllm serve meta-llama/Llama-3.1-8B --port 8101 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ seq 0 1
++ for i in $(seq 0 $((NUM_DECODE_INSTANCES-1)))
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=2
++ PORT=8200
++ SIDE_CHANNEL_PORT=5659
++ echo 'Starting decode instance 0 on GPU 2, port 8200'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ DECODE_HOSTS+=("localhost")
++ DECODE_PORTS+=($PORT)
++ for i in $(seq 0 $((NUM_DECODE_INSTANCES-1)))
+++ CUDA_VISIBLE_DEVICES=2
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5659
+++ vllm serve meta-llama/Llama-3.1-8B --port 8200 --tensor-parallel-size 1 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=3
++ PORT=8201
++ SIDE_CHANNEL_PORT=5660
++ echo 'Starting decode instance 1 on GPU 3, port 8201'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=3 VLLM_NIXL_SIDE_CHANNEL_PORT=5660 vllm serve meta-llama/Llama-3.1-8B             --port 8201             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=3 VLLM_NIXL_SIDE_CHANNEL_PORT=5660 vllm serve meta-llama/Llama-3.1-8B             --port 8201             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=3 VLLM_NIXL_SIDE_CHANNEL_PORT=5660 vllm serve meta-llama/Llama-3.1-8B             --port 8201             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ DECODE_HOSTS+=("localhost")
++ DECODE_PORTS+=($PORT)
++ for PORT in "${PREFILL_PORTS[@]}"
++ echo 'Waiting for prefill instance on port 8100 to start...'
++ wait_for_server 8100
++ local port=8100
++ timeout 1200 bash -c '
+    until curl -s localhost:8100/v1/completions > /dev/null; do
+        sleep 1
+    done'
+++ CUDA_VISIBLE_DEVICES=3
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5660
+++ vllm serve meta-llama/Llama-3.1-8B --port 8201 --tensor-parallel-size 1 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+[1;36m(APIServer pid=1112993)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1113004)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1112998)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1113009)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1113004)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1112993)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1112998)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1113009)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[W924 17:33:53.185094453 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W924 17:33:54.516522109 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=1113856)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1113857)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[W924 17:34:11.446295176 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=1113874)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[W924 17:34:26.057321754 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=1113895)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1113874)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:16<00:49, 16.52s/it]
+[1;36m(EngineCore_DP0 pid=1113857)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:34<01:43, 34.39s/it]
+[1;36m(EngineCore_DP0 pid=1113856)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:34<01:44, 34.93s/it]
+[1;36m(EngineCore_DP0 pid=1113895)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:18<00:55, 18.56s/it]
+[1;36m(EngineCore_DP0 pid=1113857)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:53<00:51, 25.62s/it]
+[1;36m(EngineCore_DP0 pid=1113856)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:54<00:51, 25.85s/it]
+[1;36m(EngineCore_DP0 pid=1113874)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:36<00:36, 18.41s/it]
+[1;36m(EngineCore_DP0 pid=1113895)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:38<00:38, 19.18s/it]
+[1;36m(EngineCore_DP0 pid=1113856)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [01:13<00:22, 22.59s/it]
+[1;36m(EngineCore_DP0 pid=1113857)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [01:12<00:22, 22.54s/it]
+[1;36m(EngineCore_DP0 pid=1113874)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:55<00:18, 18.63s/it]
+[1;36m(EngineCore_DP0 pid=1113857)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:17<00:00, 15.65s/it]
+[1;36m(EngineCore_DP0 pid=1113857)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:17<00:00, 19.46s/it]
+[1;36m(EngineCore_DP0 pid=1113857)[0;0m 
+[1;36m(EngineCore_DP0 pid=1113856)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:18<00:00, 15.72s/it]
+[1;36m(EngineCore_DP0 pid=1113856)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:18<00:00, 19.58s/it]
+[1;36m(EngineCore_DP0 pid=1113856)[0;0m 
+[1;36m(EngineCore_DP0 pid=1113874)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:00<00:00, 13.36s/it]
+[1;36m(EngineCore_DP0 pid=1113874)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:00<00:00, 15.14s/it]
+[1;36m(EngineCore_DP0 pid=1113874)[0;0m 
+[1;36m(EngineCore_DP0 pid=1113895)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:57<00:19, 19.42s/it]
+[1;36m(EngineCore_DP0 pid=1113895)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:03<00:00, 13.96s/it]
+[1;36m(EngineCore_DP0 pid=1113895)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:03<00:00, 15.86s/it]
+[1;36m(EngineCore_DP0 pid=1113895)[0;0m 
+[1;36m(APIServer pid=1112998)[0;0m INFO:     Started server process [1112998]
+[1;36m(APIServer pid=1112998)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1113004)[0;0m INFO:     Started server process [1113004]
+[1;36m(APIServer pid=1113004)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1112993)[0;0m INFO:     Started server process [1112993]
+[1;36m(APIServer pid=1112993)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1112998)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=1113004)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=1112993)[0;0m INFO:     Application startup complete.
++ return 0
++ for PORT in "${PREFILL_PORTS[@]}"
++ echo 'Waiting for prefill instance on port 8101 to start...'
++ wait_for_server 8101
++ local port=8101
++ timeout 1200 bash -c '
+    until curl -s localhost:8101/v1/completions > /dev/null; do
+        sleep 1
+    done'
++ return 0
++ for PORT in "${DECODE_PORTS[@]}"
++ echo 'Waiting for decode instance on port 8200 to start...'
++ wait_for_server 8200
++ local port=8200
++ timeout 1200 bash -c '
+    until curl -s localhost:8200/v1/completions > /dev/null; do
+        sleep 1
+    done'
++ return 0
++ for PORT in "${DECODE_PORTS[@]}"
++ echo 'Waiting for decode instance on port 8201 to start...'
++ wait_for_server 8201
++ local port=8201
++ timeout 1200 bash -c '
+    until curl -s localhost:8201/v1/completions > /dev/null; do
+        sleep 1
+    done'
+[1;36m(APIServer pid=1113009)[0;0m INFO:     Started server process [1113009]
+[1;36m(APIServer pid=1113009)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1113009)[0;0m INFO:     Application startup complete.
++ return 0
++ PROXY_CMD='python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192'
++ PROXY_CMD+=' --prefiller-hosts localhost localhost'
++ PROXY_CMD+=' --prefiller-ports 8100 8101'
++ PROXY_CMD+=' --decoder-hosts localhost localhost'
++ PROXY_CMD+=' --decoder-ports 8200 8201'
++ echo 'Starting proxy server with command: python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192 --prefiller-hosts localhost localhost --prefiller-ports 8100 8101 --decoder-hosts localhost localhost --decoder-ports 8200 8201'
++ python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192 --prefiller-hosts localhost localhost --prefiller-ports 8100 8101 --decoder-hosts localhost localhost --decoder-ports 8200 8201
+++ date +%s
++ local end_time=1758753414
++ local elapsed_time=298
++ echo 'All Prefill and Decode servers started in 298 seconds.'
++ sleep 5
+INFO:     Started server process [1115559]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8192 (Press CTRL+C to quit)
++ warm_up_server meta-llama/Llama-3.1-8B
++ local model_name=meta-llama/Llama-3.1-8B
++ echo 'Warming up the server with 10 requests...'
+++ date +%s
++ vllm bench serve --port 8192 --seed 1758753419 --model meta-llama/Llama-3.1-8B --dataset-name random --random-input-len 500 --random-output-len 100 --num-prompts 10 --request-rate 2
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:10 elapsed, 26:09:37 remaining
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:12<01:50, 12.22s/it] 20%|██        | 2/10 [00:12<00:40,  5.12s/it] 40%|████      | 4/10 [00:12<00:12,  2.10s/it] 80%|████████  | 8/10 [00:13<00:01,  1.30it/s]100%|██████████| 10/10 [00:14<00:00,  1.21it/s]100%|██████████| 10/10 [00:14<00:00,  1.50s/it]
++ run_bench meta-llama/Llama-3.1-8B 2 2
++ local model_name=meta-llama/Llama-3.1-8B
++ local prefill_instances=2
++ local decode_instances=2
++ local short_model_name=Llama-3.1-8B
++ local safe_model_name=8B
++ for input_len in "${INPUT_LENS[@]}"
++ for output_len in "${OUTPUT_LENS[@]}"
++ for num_prompts in "${NUM_PROMPTS[@]}"
++ local result_dir=results/8B-A100
+++ date +%Y%m%d.%H%M%S
++ local timestamp=20250924.173821
++ local result_file=benchmark-8B-2P2D-1000-100-20250924.173821.log
++ local full_path=results/8B-A100/benchmark-8B-2P2D-1000-100-20250924.173821.log
++ '[' '!' -d results/8B-A100 ']'
+++ date +%s
++ local start_time=1758753501
+++ date +%s
++ vllm bench serve --port 8192 --seed 1758753501 --model meta-llama/Llama-3.1-8B --dataset-name random --random-input-len 1000 --random-output-len 100 --ignore-eos --num-prompts 50 --request-rate 1 --save-result --result-dir results/8B-A100 --result-filename benchmark-8B-2P2D-1000-100-20250924.173821.log
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:08 elapsed, 27:07:39 remaining
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [00:11<09:23, 11.50s/it]  4%|▍         | 2/50 [00:14<05:09,  6.45s/it]  6%|▌         | 3/50 [00:14<02:48,  3.59s/it]  8%|▊         | 4/50 [00:14<01:44,  2.28s/it] 12%|█▏        | 6/50 [00:16<01:11,  1.62s/it] 14%|█▍        | 7/50 [00:18<01:09,  1.62s/it] 16%|█▌        | 8/50 [00:19<00:54,  1.30s/it] 18%|█▊        | 9/50 [00:22<01:18,  1.91s/it] 20%|██        | 10/50 [00:22<00:57,  1.45s/it] 22%|██▏       | 11/50 [00:22<00:41,  1.07s/it] 24%|██▍       | 12/50 [00:23<00:30,  1.26it/s] 26%|██▌       | 13/50 [00:24<00:33,  1.09it/s] 28%|██▊       | 14/50 [00:26<00:50,  1.40s/it] 30%|███       | 15/50 [00:28<00:53,  1.52s/it] 32%|███▏      | 16/50 [00:32<01:20,  2.36s/it] 34%|███▍      | 17/50 [00:33<00:57,  1.75s/it] 38%|███▊      | 19/50 [00:34<00:35,  1.13s/it] 40%|████      | 20/50 [00:37<00:47,  1.58s/it] 44%|████▍     | 22/50 [00:38<00:31,  1.13s/it] 46%|████▌     | 23/50 [00:38<00:24,  1.09it/s] 48%|████▊     | 24/50 [00:38<00:19,  1.33it/s] 52%|█████▏    | 26/50 [00:38<00:11,  2.10it/s] 54%|█████▍    | 27/50 [00:41<00:22,  1.01it/s] 58%|█████▊    | 29/50 [00:41<00:13,  1.53it/s] 60%|██████    | 30/50 [00:41<00:11,  1.78it/s] 64%|██████▍   | 32/50 [00:44<00:15,  1.15it/s] 70%|███████   | 35/50 [00:47<00:12,  1.17it/s] 72%|███████▏  | 36/50 [00:52<00:23,  1.68s/it] 76%|███████▌  | 38/50 [00:54<00:16,  1.36s/it] 78%|███████▊  | 39/50 [00:54<00:12,  1.12s/it] 80%|████████  | 40/50 [00:55<00:12,  1.25s/it] 82%|████████▏ | 41/50 [00:56<00:09,  1.05s/it] 86%|████████▌ | 43/50 [00:57<00:05,  1.30it/s] 88%|████████▊ | 44/50 [00:57<00:03,  1.52it/s] 90%|█████████ | 45/50 [00:57<00:02,  1.86it/s] 92%|█████████▏| 46/50 [00:58<00:03,  1.33it/s] 94%|█████████▍| 47/50 [00:59<00:02,  1.20it/s] 98%|█████████▊| 49/50 [01:00<00:00,  1.71it/s]100%|██████████| 50/50 [01:00<00:00,  1.81it/s]100%|██████████| 50/50 [01:00<00:00,  1.22s/it]
++ tmp_file=results/8B-A100/benchmark-8B-2P2D-1000-100-20250924.173821.log.tmp
++ jq '. + {"rps": 1, "burstiness": 1.0, "num_prompts": 50}' results/8B-A100/benchmark-8B-2P2D-1000-100-20250924.173821.log
++ mv results/8B-A100/benchmark-8B-2P2D-1000-100-20250924.173821.log.tmp results/8B-A100/benchmark-8B-2P2D-1000-100-20250924.173821.log
+++ date +%s
++ local end_time=1758753628
++ local elapsed_time=127
++ echo 'Benchmarking completed in 127 seconds.'
++ cleanup_instances
++ echo 'Cleaning up any running vLLM instances and proxy server...'
++ pkill -f 'vllm serve'
++ pkill -f toy_proxy_server.py
++ sleep 2
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1115559]
+[rank0]:[W924 17:40:30.450104738 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W924 17:40:30.458340927 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W924 17:40:30.464397460 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua019:1113874:0:1113874] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f8286aec830)
+[rank0]:[W924 17:40:30.630581946 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua019:1113857:0:1113857] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7efda808a830)
+[gpua019:1113895:0:1113895] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fe97e7a6830)
+[gpua019:1113856:0:1113856] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f32ea377830)
++ sleep 3
+[1;36m(APIServer pid=1113009)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1113009)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1113009)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1112998)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1112998)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1112998)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1113004)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1113004)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1113004)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1112993)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1112993)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1112993)[0;0m INFO:     Application shutdown complete.
++ for cfg in "${PD_RATIO[@]}"
++ set -- 1 3
++ export NUM_PREFILL_INSTANCES=1
++ NUM_PREFILL_INSTANCES=1
++ export NUM_DECODE_INSTANCES=3
++ NUM_DECODE_INSTANCES=3
++ echo ================================
++ echo 'Running with 1 prefill and 3 decode instances'
++ echo ================================
++ for model in "${MODELS[@]}"
++ benchmark_model meta-llama/Llama-3.1-8B 1 3
++ local model_name=meta-llama/Llama-3.1-8B
++ local prefill_instances=1
++ local decode_instances=3
++ echo ================================
++ echo 'Benchmarking model: meta-llama/Llama-3.1-8B in PD Config [1 3]'
++ echo ================================
+++ get_model_args meta-llama/Llama-3.1-8B
+++ local model_name=meta-llama/Llama-3.1-8B
+++ local extra_args=
+++ [[ meta-llama/Llama-3.1-8B == \d\e\e\p\s\e\e\k\-\a\i\/\d\e\e\p\s\e\e\k\-\v\l\2\-\t\i\n\y ]]
+++ echo ''
++ local model_args=
++ PREFILL_HOSTS=()
++ PREFILL_PORTS=()
++ DECODE_HOSTS=()
++ DECODE_PORTS=()
+++ date +%s
++ local start_time=1758753634
+++ seq 0 0
++ for i in $(seq 0 $((NUM_PREFILL_INSTANCES-1)))
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=0
++ PORT=8100
++ SIDE_CHANNEL_PORT=5559
++ echo 'Starting prefill instance 0 on GPU 0, port 8100'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=0 VLLM_NIXL_SIDE_CHANNEL_PORT=5559 vllm serve meta-llama/Llama-3.1-8B             --port 8100             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --tensor-parallel-size 1             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ PREFILL_HOSTS+=("localhost")
++ PREFILL_PORTS+=($PORT)
+++ CUDA_VISIBLE_DEVICES=0
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5559
+++ vllm serve meta-llama/Llama-3.1-8B --port 8100 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ seq 0 2
++ for i in $(seq 0 $((NUM_DECODE_INSTANCES-1)))
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=1
++ PORT=8200
++ SIDE_CHANNEL_PORT=5659
++ echo 'Starting decode instance 0 on GPU 1, port 8200'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=1 VLLM_NIXL_SIDE_CHANNEL_PORT=5659 vllm serve meta-llama/Llama-3.1-8B             --port 8200             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ DECODE_HOSTS+=("localhost")
++ DECODE_PORTS+=($PORT)
++ for i in $(seq 0 $((NUM_DECODE_INSTANCES-1)))
+++ CUDA_VISIBLE_DEVICES=1
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5659
+++ vllm serve meta-llama/Llama-3.1-8B --port 8200 --tensor-parallel-size 1 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=2
++ PORT=8201
++ SIDE_CHANNEL_PORT=5660
++ echo 'Starting decode instance 1 on GPU 2, port 8201'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5660 vllm serve meta-llama/Llama-3.1-8B             --port 8201             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5660 vllm serve meta-llama/Llama-3.1-8B             --port 8201             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=2 VLLM_NIXL_SIDE_CHANNEL_PORT=5660 vllm serve meta-llama/Llama-3.1-8B             --port 8201             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ DECODE_HOSTS+=("localhost")
++ DECODE_PORTS+=($PORT)
++ for i in $(seq 0 $((NUM_DECODE_INSTANCES-1)))
+++ CUDA_VISIBLE_DEVICES=2
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5660
+++ vllm serve meta-llama/Llama-3.1-8B --port 8201 --tensor-parallel-size 1 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+++ get_num_gpus
+++ [[ /usr/bin/nvidia-smi == *\n\v\i\d\i\a* ]]
++++ /usr/bin/nvidia-smi --query-gpu=name --format=csv,noheader
++++ wc -l
+++ echo 4
++ GPU_ID=3
++ PORT=8202
++ SIDE_CHANNEL_PORT=5661
++ echo 'Starting decode instance 2 on GPU 3, port 8202'
++ BASE_CMD='CUDA_VISIBLE_DEVICES=3 VLLM_NIXL_SIDE_CHANNEL_PORT=5661 vllm serve meta-llama/Llama-3.1-8B             --port 8202             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ '[' -n '' ']'
++ FULL_CMD='CUDA_VISIBLE_DEVICES=3 VLLM_NIXL_SIDE_CHANNEL_PORT=5661 vllm serve meta-llama/Llama-3.1-8B             --port 8202             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'''
++ eval 'CUDA_VISIBLE_DEVICES=3 VLLM_NIXL_SIDE_CHANNEL_PORT=5661 vllm serve meta-llama/Llama-3.1-8B             --port 8202             --tensor-parallel-size 1             --enforce-eager             --max-model-len 10000             --max-num-batched-tokens 10000             --max-num-seqs 256             --trust-remote-code             --gpu-memory-utilization 0.9             --kv-transfer-config '\''{"kv_connector":"NixlConnector","kv_role":"kv_both"}'\'' &'
++ DECODE_HOSTS+=("localhost")
++ DECODE_PORTS+=($PORT)
++ for PORT in "${PREFILL_PORTS[@]}"
++ echo 'Waiting for prefill instance on port 8100 to start...'
++ wait_for_server 8100
++ local port=8100
++ timeout 1200 bash -c '
+    until curl -s localhost:8100/v1/completions > /dev/null; do
+        sleep 1
+    done'
+++ CUDA_VISIBLE_DEVICES=3
+++ VLLM_NIXL_SIDE_CHANNEL_PORT=5661
+++ vllm serve meta-llama/Llama-3.1-8B --port 8202 --tensor-parallel-size 1 --enforce-eager --max-model-len 10000 --max-num-batched-tokens 10000 --max-num-seqs 256 --trust-remote-code --gpu-memory-utilization 0.9 --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_both"}'
+[1;36m(APIServer pid=1116988)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1116994)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1117000)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1117005)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1116988)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1116994)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1117000)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1117005)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[W924 17:42:38.720251766 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W924 17:42:39.111544464 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W924 17:42:41.578064203 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W924 17:42:42.855013728 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=1117525)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1117506)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1117533)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1117537)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=1117525)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:18<00:56, 18.97s/it]
+[1;36m(EngineCore_DP0 pid=1117506)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:18<00:54, 18.20s/it]
+[1;36m(EngineCore_DP0 pid=1117533)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:17<00:53, 17.99s/it]
+[1;36m(EngineCore_DP0 pid=1117537)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:17<00:53, 17.92s/it]
+[1;36m(EngineCore_DP0 pid=1117525)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:38<00:38, 19.12s/it]
+[1;36m(EngineCore_DP0 pid=1117506)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:36<00:36, 18.43s/it]
+[1;36m(EngineCore_DP0 pid=1117533)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:36<00:36, 18.36s/it]
+[1;36m(EngineCore_DP0 pid=1117537)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:36<00:37, 18.54s/it]
+[1;36m(EngineCore_DP0 pid=1117525)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:57<00:19, 19.16s/it]
+[1;36m(EngineCore_DP0 pid=1117506)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:55<00:18, 18.48s/it]
+[1;36m(EngineCore_DP0 pid=1117533)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:55<00:18, 18.45s/it]
+[1;36m(EngineCore_DP0 pid=1117537)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:56<00:18, 18.80s/it]
+[1;36m(EngineCore_DP0 pid=1117525)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:02<00:00, 13.61s/it]
+[1;36m(EngineCore_DP0 pid=1117525)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:02<00:00, 15.63s/it]
+[1;36m(EngineCore_DP0 pid=1117525)[0;0m 
+[1;36m(EngineCore_DP0 pid=1117506)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:00<00:00, 13.18s/it]
+[1;36m(EngineCore_DP0 pid=1117506)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:00<00:00, 15.10s/it]
+[1;36m(EngineCore_DP0 pid=1117506)[0;0m 
+[1;36m(EngineCore_DP0 pid=1117533)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:00<00:00, 13.23s/it]
+[1;36m(EngineCore_DP0 pid=1117533)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:00<00:00, 15.09s/it]
+[1;36m(EngineCore_DP0 pid=1117533)[0;0m 
+[1;36m(EngineCore_DP0 pid=1117537)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:01<00:00, 13.57s/it]
+[1;36m(EngineCore_DP0 pid=1117537)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:01<00:00, 15.39s/it]
+[1;36m(EngineCore_DP0 pid=1117537)[0;0m 
+[1;36m(APIServer pid=1117005)[0;0m INFO:     Started server process [1117005]
+[1;36m(APIServer pid=1117005)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1116994)[0;0m INFO:     Started server process [1116994]
+[1;36m(APIServer pid=1116994)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1116988)[0;0m INFO:     Started server process [1116988]
+[1;36m(APIServer pid=1116988)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1116994)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=1117005)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=1116988)[0;0m INFO:     Application startup complete.
++ return 0
++ for PORT in "${DECODE_PORTS[@]}"
++ echo 'Waiting for decode instance on port 8200 to start...'
++ wait_for_server 8200
++ local port=8200
++ timeout 1200 bash -c '
+    until curl -s localhost:8200/v1/completions > /dev/null; do
+        sleep 1
+    done'
+[1;36m(APIServer pid=1117000)[0;0m INFO:     Started server process [1117000]
+[1;36m(APIServer pid=1117000)[0;0m INFO:     Waiting for application startup.
++ return 0
++ for PORT in "${DECODE_PORTS[@]}"
++ echo 'Waiting for decode instance on port 8201 to start...'
++ wait_for_server 8201
++ local port=8201
++ timeout 1200 bash -c '
+    until curl -s localhost:8201/v1/completions > /dev/null; do
+        sleep 1
+    done'
+[1;36m(APIServer pid=1117000)[0;0m INFO:     Application startup complete.
++ return 0
++ for PORT in "${DECODE_PORTS[@]}"
++ echo 'Waiting for decode instance on port 8202 to start...'
++ wait_for_server 8202
++ local port=8202
++ timeout 1200 bash -c '
+    until curl -s localhost:8202/v1/completions > /dev/null; do
+        sleep 1
+    done'
++ return 0
++ PROXY_CMD='python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192'
++ PROXY_CMD+=' --prefiller-hosts localhost'
++ PROXY_CMD+=' --prefiller-ports 8100'
++ PROXY_CMD+=' --decoder-hosts localhost localhost localhost'
++ PROXY_CMD+=' --decoder-ports 8200 8201 8202'
++ echo 'Starting proxy server with command: python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192 --prefiller-hosts localhost --prefiller-ports 8100 --decoder-hosts localhost localhost localhost --decoder-ports 8200 8201 8202'
++ python /u/kramesh/Code/vllm/tests/v1/kv_connector/nixl_integration/toy_proxy_server.py --port 8192 --prefiller-hosts localhost --prefiller-ports 8100 --decoder-hosts localhost localhost localhost --decoder-ports 8200 8201 8202
+++ date +%s
++ local end_time=1758753916
++ local elapsed_time=282
++ echo 'All Prefill and Decode servers started in 282 seconds.'
++ sleep 5
+INFO:     Started server process [1119527]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8192 (Press CTRL+C to quit)
++ warm_up_server meta-llama/Llama-3.1-8B
++ local model_name=meta-llama/Llama-3.1-8B
++ echo 'Warming up the server with 10 requests...'
+++ date +%s
++ vllm bench serve --port 8192 --seed 1758753921 --model meta-llama/Llama-3.1-8B --dataset-name random --random-input-len 500 --random-output-len 100 --num-prompts 10 --request-rate 2
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:10 elapsed, 31:48:09 remaining
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:14<02:14, 14.90s/it] 30%|███       | 3/10 [00:15<00:27,  3.92s/it] 50%|█████     | 5/10 [00:15<00:10,  2.05s/it] 60%|██████    | 6/10 [00:15<00:06,  1.54s/it] 80%|████████  | 8/10 [00:15<00:01,  1.11it/s]100%|██████████| 10/10 [00:17<00:00,  1.18it/s]100%|██████████| 10/10 [00:17<00:00,  1.74s/it]
++ run_bench meta-llama/Llama-3.1-8B 1 3
++ local model_name=meta-llama/Llama-3.1-8B
++ local prefill_instances=1
++ local decode_instances=3
++ local short_model_name=Llama-3.1-8B
++ local safe_model_name=8B
++ for input_len in "${INPUT_LENS[@]}"
++ for output_len in "${OUTPUT_LENS[@]}"
++ for num_prompts in "${NUM_PROMPTS[@]}"
++ local result_dir=results/8B-A100
+++ date +%Y%m%d.%H%M%S
++ local timestamp=20250924.174645
++ local result_file=benchmark-8B-1P3D-1000-100-20250924.174645.log
++ local full_path=results/8B-A100/benchmark-8B-1P3D-1000-100-20250924.174645.log
++ '[' '!' -d results/8B-A100 ']'
+++ date +%s
++ local start_time=1758754005
+++ date +%s
++ vllm bench serve --port 8192 --seed 1758754005 --model meta-llama/Llama-3.1-8B --dataset-name random --random-input-len 1000 --random-output-len 100 --ignore-eos --num-prompts 50 --request-rate 1 --save-result --result-dir results/8B-A100 --result-filename benchmark-8B-1P3D-1000-100-20250924.174645.log
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:07 elapsed, 18:00:54 remaining
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [00:11<09:33, 11.71s/it]  4%|▍         | 2/50 [00:16<06:07,  7.66s/it]  6%|▌         | 3/50 [00:18<03:52,  4.96s/it] 12%|█▏        | 6/50 [00:19<01:21,  1.85s/it] 14%|█▍        | 7/50 [00:20<01:11,  1.66s/it] 16%|█▌        | 8/50 [00:21<01:03,  1.52s/it] 18%|█▊        | 9/50 [00:22<01:02,  1.53s/it] 20%|██        | 10/50 [00:25<01:16,  1.91s/it] 22%|██▏       | 11/50 [00:25<00:54,  1.41s/it] 24%|██▍       | 12/50 [00:26<00:41,  1.10s/it] 26%|██▌       | 13/50 [00:26<00:33,  1.09it/s] 28%|██▊       | 14/50 [00:27<00:35,  1.02it/s] 30%|███       | 15/50 [00:27<00:25,  1.36it/s] 32%|███▏      | 16/50 [00:28<00:19,  1.70it/s] 34%|███▍      | 17/50 [00:28<00:21,  1.52it/s] 36%|███▌      | 18/50 [00:29<00:17,  1.84it/s] 38%|███▊      | 19/50 [00:31<00:30,  1.01it/s] 40%|████      | 20/50 [00:31<00:24,  1.24it/s] 42%|████▏     | 21/50 [00:32<00:21,  1.37it/s] 44%|████▍     | 22/50 [00:33<00:23,  1.20it/s] 46%|████▌     | 23/50 [00:33<00:17,  1.57it/s] 48%|████▊     | 24/50 [00:34<00:17,  1.45it/s] 50%|█████     | 25/50 [00:34<00:15,  1.66it/s] 52%|█████▏    | 26/50 [00:35<00:13,  1.80it/s] 54%|█████▍    | 27/50 [00:35<00:12,  1.79it/s] 56%|█████▌    | 28/50 [00:37<00:17,  1.25it/s] 58%|█████▊    | 29/50 [00:37<00:12,  1.63it/s] 60%|██████    | 30/50 [00:38<00:15,  1.30it/s] 62%|██████▏   | 31/50 [00:39<00:16,  1.19it/s] 64%|██████▍   | 32/50 [00:41<00:23,  1.30s/it] 66%|██████▌   | 33/50 [00:44<00:28,  1.71s/it] 68%|██████▊   | 34/50 [00:45<00:23,  1.49s/it] 70%|███████   | 35/50 [00:46<00:20,  1.39s/it] 72%|███████▏  | 36/50 [00:47<00:16,  1.18s/it] 76%|███████▌  | 38/50 [00:47<00:08,  1.47it/s] 78%|███████▊  | 39/50 [00:48<00:09,  1.16it/s] 80%|████████  | 40/50 [00:52<00:15,  1.57s/it] 82%|████████▏ | 41/50 [00:53<00:12,  1.43s/it] 84%|████████▍ | 42/50 [00:56<00:15,  1.88s/it] 86%|████████▌ | 43/50 [00:56<00:09,  1.39s/it] 88%|████████▊ | 44/50 [00:57<00:06,  1.08s/it] 90%|█████████ | 45/50 [01:00<00:08,  1.69s/it] 92%|█████████▏| 46/50 [01:00<00:04,  1.23s/it] 94%|█████████▍| 47/50 [01:00<00:02,  1.04it/s] 96%|█████████▌| 48/50 [01:00<00:01,  1.41it/s] 98%|█████████▊| 49/50 [01:01<00:00,  1.26it/s]100%|██████████| 50/50 [01:01<00:00,  1.24s/it]
++ tmp_file=results/8B-A100/benchmark-8B-1P3D-1000-100-20250924.174645.log.tmp
++ jq '. + {"rps": 1, "burstiness": 1.0, "num_prompts": 50}' results/8B-A100/benchmark-8B-1P3D-1000-100-20250924.174645.log
++ mv results/8B-A100/benchmark-8B-1P3D-1000-100-20250924.174645.log.tmp results/8B-A100/benchmark-8B-1P3D-1000-100-20250924.174645.log
+++ date +%s
++ local end_time=1758754132
++ local elapsed_time=127
++ echo 'Benchmarking completed in 127 seconds.'
++ cleanup_instances
++ echo 'Cleaning up any running vLLM instances and proxy server...'
++ pkill -f 'vllm serve'
++ pkill -f toy_proxy_server.py
+INFO:     Shutting down
++ sleep 2
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1119527]
+[rank0]:[W924 17:48:54.496097050 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W924 17:48:54.497217857 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W924 17:48:54.501983071 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua019:1117537:0:1117537] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f5c6420e830)
+[gpua019:1117525:0:1117525] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7eff6a47d830)
+[rank0]:[W924 17:48:54.743308465 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua019:1117533:0:1117533] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f9ba8164830)
+[gpua019:1117506:0:1117506] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fc32c3df830)
++ sleep 3
+[1;36m(APIServer pid=1117005)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1117005)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1117005)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1116994)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1116994)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1116994)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1117000)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1117000)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1117000)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=1116988)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=1116988)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=1116988)[0;0m INFO:     Application shutdown complete.
++ echo 'All tests completed!'
++ jobs -pr
++ xargs -r kill

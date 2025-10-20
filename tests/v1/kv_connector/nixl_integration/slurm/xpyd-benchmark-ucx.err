@@ -1,0 +1,275 @@
+[1;36m(APIServer pid=3386644)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=3386638)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=3386644)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=3386638)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[W925 09:32:34.560822446 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W925 09:32:34.560892917 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+W0925 09:32:38.175917 3387137 ucx_utils.cpp:64] Unexpected UCX error: Destination is unreachable
+W0925 09:32:38.176038 3387133 ucx_utils.cpp:64] Unexpected UCX error: Destination is unreachable
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m Process EngineCore_DP0:
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m Process EngineCore_DP0:
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self.run()
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self._target(*self._args, **self._kwargs)
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 722, in run_engine_core
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     raise e
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 709, in run_engine_core
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     engine_core = EngineCoreProc(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 505, in __init__
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     super().__init__(vllm_config, executor_class, log_stats,
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 82, in __init__
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self.model_executor = executor_class(vllm_config)
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 54, in __init__
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self._init_executor()
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/executor/uniproc_executor.py", line 48, in _init_executor
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self.collective_rpc("init_device")
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/executor/uniproc_executor.py", line 58, in collective_rpc
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     answer = run_method(self.driver_worker, method, args, kwargs)
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/utils/__init__.py", line 3060, in run_method
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     return func(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/worker/worker_base.py", line 611, in init_device
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self.worker.init_device()  # type: ignore
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     ^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 193, in init_device
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     init_worker_distributed_environment(self.vllm_config, self.rank,
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 697, in init_worker_distributed_environment
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     ensure_kv_transfer_initialized(vllm_config)
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/distributed/kv_transfer/kv_transfer_state.py", line 63, in ensure_kv_transfer_initialized
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     _KV_CONNECTOR_AGENT = KVConnectorFactory.create_connector(
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/distributed/kv_transfer/kv_connector/factory.py", line 61, in create_connector
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     return connector_cls(config, role)
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/distributed/kv_transfer/kv_connector/v1/nixl_connector.py", line 137, in __init__
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self.connector_worker = NixlConnectorWorker(
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m                             ^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/distributed/kv_transfer/kv_connector/v1/nixl_connector.py", line 437, in __init__
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self.nixl_wrapper = NixlWrapper(str(uuid.uuid4()), None)
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/nixl/_api.py", line 141, in __init__
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self.create_backend(bknd, init)
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/nixl/_api.py", line 245, in create_backend
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self.backends[backend] = self.agent.createBackend(backend, initParams)
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m nixl._bindings.nixlBackendError: NIXL_ERR_BACKEND
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m Exception ignored in: <function NixlConnectorWorker.__del__ at 0x7f4b49577a60>
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/distributed/kv_transfer/kv_connector/v1/nixl_connector.py", line 556, in __del__
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self.run()
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self._target(*self._args, **self._kwargs)
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 722, in run_engine_core
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     raise e
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 709, in run_engine_core
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     engine_core = EngineCoreProc(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 505, in __init__
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     super().__init__(vllm_config, executor_class, log_stats,
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 82, in __init__
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self.model_executor = executor_class(vllm_config)
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 54, in __init__
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self._init_executor()
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/executor/uniproc_executor.py", line 48, in _init_executor
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self.collective_rpc("init_device")
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/executor/uniproc_executor.py", line 58, in collective_rpc
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     answer = run_method(self.driver_worker, method, args, kwargs)
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/utils/__init__.py", line 3060, in run_method
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     return func(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/worker/worker_base.py", line 611, in init_device
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self.worker.init_device()  # type: ignore
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     ^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 193, in init_device
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     init_worker_distributed_environment(self.vllm_config, self.rank,
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 697, in init_worker_distributed_environment
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     ensure_kv_transfer_initialized(vllm_config)
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/distributed/kv_transfer/kv_transfer_state.py", line 63, in ensure_kv_transfer_initialized
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     _KV_CONNECTOR_AGENT = KVConnectorFactory.create_connector(
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/distributed/kv_transfer/kv_connector/factory.py", line 61, in create_connector
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     return connector_cls(config, role)
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/distributed/kv_transfer/kv_connector/v1/nixl_connector.py", line 137, in __init__
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self.connector_worker = NixlConnectorWorker(
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m                             ^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/distributed/kv_transfer/kv_connector/v1/nixl_connector.py", line 437, in __init__
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self.nixl_wrapper = NixlWrapper(str(uuid.uuid4()), None)
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/nixl/_api.py", line 141, in __init__
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self.create_backend(bknd, init)
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/nixl/_api.py", line 245, in create_backend
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self.backends[backend] = self.agent.createBackend(backend, initParams)
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m nixl._bindings.nixlBackendError: NIXL_ERR_BACKEND
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m Exception ignored in: <function NixlConnectorWorker.__del__ at 0x7f9fd413fa60>
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/distributed/kv_transfer/kv_connector/v1/nixl_connector.py", line 556, in __del__
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self._handshake_initiation_executor.shutdown(wait=False)
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m AttributeError: 'NixlConnectorWorker' object has no attribute '_handshake_initiation_executor'
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m Exception ignored in: <function ExecutorBase.__del__ at 0x7f4b4ce8e340>
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 237, in __del__
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self._handshake_initiation_executor.shutdown(wait=False)
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m AttributeError: 'NixlConnectorWorker' object has no attribute '_handshake_initiation_executor'
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m Exception ignored in: <function ExecutorBase.__del__ at 0x7f9fd6c36340>
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 237, in __del__
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self.shutdown()
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/executor/uniproc_executor.py", line 76, in shutdown
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self.shutdown()
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/executor/uniproc_executor.py", line 76, in shutdown
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     worker.shutdown()
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/worker/worker_base.py", line 528, in shutdown
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     worker.shutdown()
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/worker/worker_base.py", line 528, in shutdown
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self.worker.shutdown()
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 675, in shutdown
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self.worker.shutdown()
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 675, in shutdown
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     self.model_runner.ensure_kv_transfer_shutdown()
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387133)[0;0m AttributeError: 'NoneType' object has no attribute 'ensure_kv_transfer_shutdown'
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     self.model_runner.ensure_kv_transfer_shutdown()
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=3387137)[0;0m AttributeError: 'NoneType' object has no attribute 'ensure_kv_transfer_shutdown'
+[rank0]:[W925 09:32:39.552640100 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W925 09:32:39.560910602 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua001:3387137:0:3387137] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f4a8cfb9830)
+[gpua001:3387133:0:3387133] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f9f2030e830)
+[1;36m(APIServer pid=3386644)[0;0m Traceback (most recent call last):
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/bin/vllm", line 10, in <module>
+[1;36m(APIServer pid=3386644)[0;0m     sys.exit(main())
+[1;36m(APIServer pid=3386644)[0;0m              ^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/cli/main.py", line 54, in main
+[1;36m(APIServer pid=3386644)[0;0m     args.dispatch_function(args)
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/cli/serve.py", line 50, in cmd
+[1;36m(APIServer pid=3386644)[0;0m     uvloop.run(run_server(args))
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/uvloop/__init__.py", line 109, in run
+[1;36m(APIServer pid=3386644)[0;0m     return __asyncio.run(
+[1;36m(APIServer pid=3386644)[0;0m            ^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+[1;36m(APIServer pid=3386644)[0;0m     return runner.run(main)
+[1;36m(APIServer pid=3386644)[0;0m            ^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+[1;36m(APIServer pid=3386644)[0;0m     return self._loop.run_until_complete(task)
+[1;36m(APIServer pid=3386644)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/uvloop/__init__.py", line 61, in wrapper
+[1;36m(APIServer pid=3386644)[0;0m     return await main
+[1;36m(APIServer pid=3386644)[0;0m            ^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 1941, in run_server
+[1;36m(APIServer pid=3386644)[0;0m     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 1961, in run_server_worker
+[1;36m(APIServer pid=3386644)[0;0m     async with build_async_engine_client(
+[1;36m(APIServer pid=3386644)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+[1;36m(APIServer pid=3386644)[0;0m     return await anext(self.gen)
+[1;36m(APIServer pid=3386644)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 179, in build_async_engine_client
+[1;36m(APIServer pid=3386644)[0;0m     async with build_async_engine_client_from_engine_args(
+[1;36m(APIServer pid=3386644)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+[1;36m(APIServer pid=3386644)[0;0m     return await anext(self.gen)
+[1;36m(APIServer pid=3386644)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 221, in build_async_engine_client_from_engine_args
+[1;36m(APIServer pid=3386644)[0;0m     async_llm = AsyncLLM.from_vllm_config(
+[1;36m(APIServer pid=3386644)[0;0m                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/utils/__init__.py", line 1589, in inner
+[1;36m(APIServer pid=3386644)[0;0m     return fn(*args, **kwargs)
+[1;36m(APIServer pid=3386644)[0;0m            ^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 212, in from_vllm_config
+[1;36m(APIServer pid=3386644)[0;0m     return cls(
+[1;36m(APIServer pid=3386644)[0;0m            ^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 136, in __init__
+[1;36m(APIServer pid=3386644)[0;0m     self.engine_core = EngineCoreClient.make_async_mp_client(
+[1;36m(APIServer pid=3386644)[0;0m                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 102, in make_async_mp_client
+[1;36m(APIServer pid=3386644)[0;0m     return AsyncMPClient(*client_args)
+[1;36m(APIServer pid=3386644)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 769, in __init__
+[1;36m(APIServer pid=3386644)[0;0m     super().__init__(
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 448, in __init__
+[1;36m(APIServer pid=3386644)[0;0m     with launch_core_engines(vllm_config, executor_class,
+[1;36m(APIServer pid=3386644)[0;0m          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386644)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 144, in __exit__
+[1;36m(APIServer pid=3386644)[0;0m     next(self.gen)
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 729, in launch_core_engines
+[1;36m(APIServer pid=3386644)[0;0m     wait_for_engine_startup(
+[1;36m(APIServer pid=3386644)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 782, in wait_for_engine_startup
+[1;36m(APIServer pid=3386644)[0;0m     raise RuntimeError("Engine core initialization failed. "
+[1;36m(APIServer pid=3386644)[0;0m RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[1;36m(APIServer pid=3386638)[0;0m Traceback (most recent call last):
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/bin/vllm", line 10, in <module>
+[1;36m(APIServer pid=3386638)[0;0m     sys.exit(main())
+[1;36m(APIServer pid=3386638)[0;0m              ^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/cli/main.py", line 54, in main
+[1;36m(APIServer pid=3386638)[0;0m     args.dispatch_function(args)
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/cli/serve.py", line 50, in cmd
+[1;36m(APIServer pid=3386638)[0;0m     uvloop.run(run_server(args))
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/uvloop/__init__.py", line 109, in run
+[1;36m(APIServer pid=3386638)[0;0m     return __asyncio.run(
+[1;36m(APIServer pid=3386638)[0;0m            ^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+[1;36m(APIServer pid=3386638)[0;0m     return runner.run(main)
+[1;36m(APIServer pid=3386638)[0;0m            ^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+[1;36m(APIServer pid=3386638)[0;0m     return self._loop.run_until_complete(task)
+[1;36m(APIServer pid=3386638)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/uvloop/__init__.py", line 61, in wrapper
+[1;36m(APIServer pid=3386638)[0;0m     return await main
+[1;36m(APIServer pid=3386638)[0;0m            ^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 1941, in run_server
+[1;36m(APIServer pid=3386638)[0;0m     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 1961, in run_server_worker
+[1;36m(APIServer pid=3386638)[0;0m     async with build_async_engine_client(
+[1;36m(APIServer pid=3386638)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+[1;36m(APIServer pid=3386638)[0;0m     return await anext(self.gen)
+[1;36m(APIServer pid=3386638)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 179, in build_async_engine_client
+[1;36m(APIServer pid=3386638)[0;0m     async with build_async_engine_client_from_engine_args(
+[1;36m(APIServer pid=3386638)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+[1;36m(APIServer pid=3386638)[0;0m     return await anext(self.gen)
+[1;36m(APIServer pid=3386638)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 221, in build_async_engine_client_from_engine_args
+[1;36m(APIServer pid=3386638)[0;0m     async_llm = AsyncLLM.from_vllm_config(
+[1;36m(APIServer pid=3386638)[0;0m                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/utils/__init__.py", line 1589, in inner
+[1;36m(APIServer pid=3386638)[0;0m     return fn(*args, **kwargs)
+[1;36m(APIServer pid=3386638)[0;0m            ^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 212, in from_vllm_config
+[1;36m(APIServer pid=3386638)[0;0m     return cls(
+[1;36m(APIServer pid=3386638)[0;0m            ^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 136, in __init__
+[1;36m(APIServer pid=3386638)[0;0m     self.engine_core = EngineCoreClient.make_async_mp_client(
+[1;36m(APIServer pid=3386638)[0;0m                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 102, in make_async_mp_client
+[1;36m(APIServer pid=3386638)[0;0m     return AsyncMPClient(*client_args)
+[1;36m(APIServer pid=3386638)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 769, in __init__
+[1;36m(APIServer pid=3386638)[0;0m     super().__init__(
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 448, in __init__
+[1;36m(APIServer pid=3386638)[0;0m     with launch_core_engines(vllm_config, executor_class,
+[1;36m(APIServer pid=3386638)[0;0m          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=3386638)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 144, in __exit__
+[1;36m(APIServer pid=3386638)[0;0m     next(self.gen)
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 729, in launch_core_engines
+[1;36m(APIServer pid=3386638)[0;0m     wait_for_engine_startup(
+[1;36m(APIServer pid=3386638)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 782, in wait_for_engine_startup
+[1;36m(APIServer pid=3386638)[0;0m     raise RuntimeError("Engine core initialization failed. "
+[1;36m(APIServer pid=3386638)[0;0m RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+srun: error: gpua001: task 0: Exited with exit code 1

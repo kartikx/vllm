@@ -1,27 +1,25 @@
 #!/bin/bash
-set -xe
+set -e
 
 # Models to run
-MODELS=(
-    "meta-llama/Llama-3.1-8B"
-)
-
-PREFILLER_TP_SIZE=1
-DECODER_TP_SIZE=1
+MODELS=${MODELS:-"meta-llama/Llama-3.1-8B"}
 
 # Where results are stored, update if you want fresh results that don't over-write previous ones.
-RESULT_DIR="results/8B-A100"
+RESULT_DIR=${RESULT_DIR:-"results/8B-A100"}
 
 # Benchmark configuration - (prefill, decode) instance pairs
-PD_RATIO=("1 1" "2 1" "3 1" "2 2" "1 3")
+PD_RATIO_LIST=${PD_RATIO_LIST:-"1,1 2,1 3,1"}
 
 # Input and output lengths for benchmarks
 # TODO - these should always have reliable defaults.
 # TODO - take these as env vars so that you can construct multiple slurm jobs
-INPUT_LENS=(1000)
-OUTPUT_LENS=(100)
-NUM_PROMPTS=(50)
-RPS=(1)
+INPUT_LENS=${INPUT_LENS:-"500"}
+OUTPUT_LENS=${OUTPUT_LENS:-"100"}
+NUM_PROMPTS=${NUM_PROMPTS:-"100"}
+RPS=${RPS:-"5"}
+
+# Default value for DECODE_MAX_NUM_BATCHED_TOKENS
+DECODE_MAX_NUM_BATCHED_TOKENS=${DECODE_MAX_NUM_BATCHED_TOKENS:-2048}
 
 # Find the git repository root directory
 GIT_ROOT=$(git rev-parse --show-toplevel)
@@ -109,9 +107,8 @@ run_bench() {
                     --num-prompts $num_prompts --request-rate $RPS --save-result --result-dir $result_dir --result-filename $result_file
 
                 # Append test-specific metadata to the log file
-                # Ensure the log file contains valid JSON with appended metadata
-                tmp_file="${full_path}.tmp"
-                jq ". + {\"rps\": $RPS, \"burstiness\": 1.0, \"num_prompts\": $num_prompts}" "$full_path" > "$tmp_file" && mv "$tmp_file" "$full_path"
+                # tmp_file="${full_path}.tmp"
+                # jq ". + {\"rps\": $RPS, \"burstiness\": 1.0, \"num_prompts\": $num_prompts}" "$full_path" > "$tmp_file" && mv "$tmp_file" "$full_path"
 
                 local end_time=$(date +%s)
                 local elapsed_time=$((end_time - start_time))
@@ -157,13 +154,8 @@ benchmark_model () {
         # Build the command with or without model-specific args
         BASE_CMD="CUDA_VISIBLE_DEVICES=$GPU_ID VLLM_NIXL_SIDE_CHANNEL_PORT=$SIDE_CHANNEL_PORT vllm serve $model_name \
             --port $PORT \
-            --enforce-eager \
-            --max-model-len 10000 \
-            --max-num-batched-tokens 10000 \
-            --max-num-seqs 256 \
-            --trust-remote-code \
             --gpu-memory-utilization 0.9 \
-            --tensor-parallel-size $PREFILLER_TP_SIZE \
+            --enforce-eager \
             --kv-transfer-config '{\"kv_connector\":\"NixlConnector\",\"kv_role\":\"kv_both\"}'"
 
         if [ -n "$model_args" ]; then
@@ -186,19 +178,15 @@ benchmark_model () {
         # Calculate port number (base port + instance number)
         PORT=$((8200 + i))
         # Calculate side channel port
-        SIDE_CHANNEL_PORT=$((5659 + i * $DECODER_TP_SIZE))
+        SIDE_CHANNEL_PORT=$((5659 + i))
 
         echo "Starting decode instance $i on GPU $GPU_ID, port $PORT"
 
         # Build the command with or without model-specific args
         BASE_CMD="CUDA_VISIBLE_DEVICES=$GPU_ID VLLM_NIXL_SIDE_CHANNEL_PORT=$SIDE_CHANNEL_PORT vllm serve $model_name \
             --port $PORT \
-            --tensor-parallel-size $DECODER_TP_SIZE \
+            --max-num-batched-tokens $DECODE_MAX_NUM_BATCHED_TOKENS \
             --enforce-eager \
-            --max-model-len 10000 \
-            --max-num-batched-tokens 10000 \
-            --max-num-seqs 256 \
-            --trust-remote-code \
             --gpu-memory-utilization 0.9 \
             --kv-transfer-config '{\"kv_connector\":\"NixlConnector\",\"kv_role\":\"kv_both\"}'"
 
@@ -275,10 +263,8 @@ warm_up_server() {
 
 # Function to run benchmarks for different (prefill, decode) configurations
 run_benchmark_scenarios() {
-    for cfg in "${PD_RATIO[@]}"; do
-        set -- $cfg
-        export NUM_PREFILL_INSTANCES=$1
-        export NUM_DECODE_INSTANCES=$2
+    for pd_ratio in $PD_RATIO_LIST; do
+        IFS="," read -r NUM_PREFILL_INSTANCES NUM_DECODE_INSTANCES <<< $pd_ratio
         echo "================================"
         echo "Running with $NUM_PREFILL_INSTANCES prefill and $NUM_DECODE_INSTANCES decode instances"
         echo "================================"
@@ -287,6 +273,8 @@ run_benchmark_scenarios() {
         done
     done
 }
+
+echo "MODELS=$MODELS, PREFILLER_TP_SIZE=$PREFILLER_TP_SIZE, DECODER_TP_SIZE=$DECODER_TP_SIZE, RESULT_DIR=$RESULT_DIR, PD_RATIO_LIST=$PD_RATIO_LIST, INPUT_LENS=$INPUT_LENS, OUTPUT_LENS=$OUTPUT_LENS, NUM_PROMPTS=$NUM_PROMPTS, RPS=$RPS, DECODE_MAX_NUM_BATCHED_TOKENS=$DECODE_MAX_NUM_BATCHED_TOKENS"
 
 # Run benchmarks for different (prefill, decode) configurations
 run_benchmark_scenarios

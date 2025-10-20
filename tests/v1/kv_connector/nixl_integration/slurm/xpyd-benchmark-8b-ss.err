@@ -1,0 +1,255 @@
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[1;36m(APIServer pid=101669)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=101663)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[1;36m(EngineCore_DP0 pid=102148)[0;0m W0928 18:19:54.536000 102148 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+[1;36m(EngineCore_DP0 pid=102148)[0;0m W0928 18:19:54.536000 102148 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[1;36m(EngineCore_DP0 pid=102149)[0;0m W0928 18:19:54.538000 102149 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+[1;36m(EngineCore_DP0 pid=102149)[0;0m W0928 18:19:54.538000 102149 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[W928 18:19:58.468367183 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W928 18:19:58.468431755 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=102149)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=102148)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=102149)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:20<01:01, 20.54s/it]
+[1;36m(EngineCore_DP0 pid=102148)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:20<01:01, 20.35s/it]
+[1;36m(EngineCore_DP0 pid=102149)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:38<00:38, 19.24s/it]
+[1;36m(EngineCore_DP0 pid=102148)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:38<00:38, 19.12s/it]
+[1;36m(EngineCore_DP0 pid=102149)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:55<00:17, 17.86s/it]
+[1;36m(EngineCore_DP0 pid=102148)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:54<00:17, 17.82s/it]
+[1;36m(EngineCore_DP0 pid=102149)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:58<00:00, 12.20s/it]
+[1;36m(EngineCore_DP0 pid=102149)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:58<00:00, 14.65s/it]
+[1;36m(EngineCore_DP0 pid=102149)[0;0m 
+[1;36m(EngineCore_DP0 pid=102148)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:58<00:00, 12.22s/it]
+[1;36m(EngineCore_DP0 pid=102148)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:58<00:00, 14.63s/it]
+[1;36m(EngineCore_DP0 pid=102148)[0;0m 
+[1;36m(APIServer pid=101663)[0;0m INFO:     Started server process [101663]
+[1;36m(APIServer pid=101663)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=101669)[0;0m INFO:     Started server process [101669]
+[1;36m(APIServer pid=101669)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=101669)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=101663)[0;0m INFO:     Application startup complete.
+INFO:     Started server process [103191]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8192 (Press CTRL+C to quit)
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:06 elapsed, 31:06:43 remaining
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:06<00:54,  6.04s/it] 20%|██        | 2/10 [00:06<00:21,  2.74s/it] 40%|████      | 4/10 [00:06<00:06,  1.12s/it] 50%|█████     | 5/10 [00:08<00:06,  1.23s/it] 60%|██████    | 6/10 [00:08<00:04,  1.03s/it] 70%|███████   | 7/10 [00:09<00:02,  1.15it/s] 90%|█████████ | 9/10 [00:09<00:00,  1.80it/s]100%|██████████| 10/10 [00:09<00:00,  2.09it/s]100%|██████████| 10/10 [00:09<00:00,  1.00it/s]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:05 elapsed, 7:45:13 remaining
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:12<20:27, 12.39s/it]  2%|▏         | 2/100 [00:12<08:31,  5.22s/it]  7%|▋         | 7/100 [00:12<01:37,  1.05s/it] 13%|█▎        | 13/100 [00:13<00:41,  2.11it/s] 15%|█▌        | 15/100 [00:13<00:32,  2.60it/s] 21%|██        | 21/100 [00:13<00:17,  4.49it/s] 25%|██▌       | 25/100 [00:13<00:12,  6.11it/s] 35%|███▌      | 35/100 [00:13<00:05, 11.37it/s] 41%|████      | 41/100 [00:14<00:04, 13.62it/s] 48%|████▊     | 48/100 [00:14<00:02, 17.40it/s] 54%|█████▍    | 54/100 [00:14<00:02, 17.92it/s] 60%|██████    | 60/100 [00:14<00:01, 20.93it/s] 68%|██████▊   | 68/100 [00:15<00:01, 24.45it/s] 72%|███████▏  | 72/100 [00:15<00:01, 26.42it/s] 76%|███████▌  | 76/100 [00:15<00:00, 28.43it/s] 82%|████████▏ | 82/100 [00:15<00:00, 29.44it/s] 93%|█████████▎| 93/100 [00:15<00:00, 38.13it/s] 99%|█████████▉| 99/100 [00:15<00:00, 38.45it/s]100%|██████████| 100/100 [00:15<00:00,  6.30it/s]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [103191]
+[rank0]:[W928 18:23:35.930225227 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W928 18:23:35.060353147 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua040:102148:0:102148] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7faf5ffb3830)
+[gpua040:102149:0:102149] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f174204f830)
+[1;36m(APIServer pid=101669)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=101669)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=101669)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=101663)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=101663)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=101663)[0;0m INFO:     Application shutdown complete.
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[1;36m(APIServer pid=103916)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=103921)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[1;36m(APIServer pid=103927)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[1;36m(EngineCore_DP0 pid=104395)[0;0m W0928 18:25:09.897000 104395 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+[1;36m(EngineCore_DP0 pid=104395)[0;0m W0928 18:25:09.897000 104395 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[W928 18:25:12.383616179 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=104404)[0;0m W0928 18:25:12.404000 104404 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+[1;36m(EngineCore_DP0 pid=104404)[0;0m W0928 18:25:12.404000 104404 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[W928 18:25:14.413172132 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=104417)[0;0m W0928 18:25:14.439000 104417 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+[1;36m(EngineCore_DP0 pid=104417)[0;0m W0928 18:25:14.439000 104417 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[1;36m(EngineCore_DP0 pid=104404)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[W928 18:25:19.420506613 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=104395)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=104417)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=104404)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:11<00:34, 11.53s/it]
+[1;36m(EngineCore_DP0 pid=104395)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:11<00:35, 11.80s/it]
+[1;36m(EngineCore_DP0 pid=104417)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:13<00:41, 13.89s/it]
+[1;36m(EngineCore_DP0 pid=104404)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:25<00:26, 13.11s/it]
+[1;36m(EngineCore_DP0 pid=104395)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:25<00:26, 13.08s/it]
+[1;36m(EngineCore_DP0 pid=104417)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:28<00:28, 14.16s/it]
+[1;36m(EngineCore_DP0 pid=104404)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:40<00:13, 13.67s/it]
+[1;36m(EngineCore_DP0 pid=104395)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:39<00:13, 13.50s/it]
+[1;36m(EngineCore_DP0 pid=104404)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:43<00:00,  9.77s/it]
+[1;36m(EngineCore_DP0 pid=104404)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:43<00:00, 10.97s/it]
+[1;36m(EngineCore_DP0 pid=104404)[0;0m 
+[1;36m(EngineCore_DP0 pid=104395)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:43<00:00,  9.71s/it]
+[1;36m(EngineCore_DP0 pid=104395)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:43<00:00, 10.92s/it]
+[1;36m(EngineCore_DP0 pid=104395)[0;0m 
+[1;36m(EngineCore_DP0 pid=104417)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:42<00:14, 14.19s/it]
+[1;36m(EngineCore_DP0 pid=104417)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:46<00:00, 10.18s/it]
+[1;36m(EngineCore_DP0 pid=104417)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:46<00:00, 11.62s/it]
+[1;36m(EngineCore_DP0 pid=104417)[0;0m 
+[1;36m(APIServer pid=103921)[0;0m INFO:     Started server process [103921]
+[1;36m(APIServer pid=103921)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=103916)[0;0m INFO:     Started server process [103916]
+[1;36m(APIServer pid=103916)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=103921)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=103916)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=103927)[0;0m INFO:     Started server process [103927]
+[1;36m(APIServer pid=103927)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=103927)[0;0m INFO:     Application startup complete.
+INFO:     Started server process [105513]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8192 (Press CTRL+C to quit)
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:08 elapsed, 26:32:26 remaining
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:08<01:18,  8.74s/it] 20%|██        | 2/10 [00:09<00:30,  3.85s/it] 30%|███       | 3/10 [00:10<00:17,  2.56s/it] 40%|████      | 4/10 [00:10<00:09,  1.63s/it] 50%|█████     | 5/10 [00:10<00:05,  1.10s/it] 60%|██████    | 6/10 [00:10<00:03,  1.28it/s] 80%|████████  | 8/10 [00:11<00:01,  1.59it/s]100%|██████████| 10/10 [00:11<00:00,  2.31it/s]100%|██████████| 10/10 [00:11<00:00,  1.20s/it]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:06 elapsed, 9:47:04 remaining
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:13<21:39, 13.13s/it]  2%|▏         | 2/100 [00:13<09:02,  5.54s/it]  3%|▎         | 3/100 [00:13<04:57,  3.07s/it]  9%|▉         | 9/100 [00:13<00:58,  1.56it/s] 12%|█▏        | 12/100 [00:13<00:37,  2.35it/s] 16%|█▌        | 16/100 [00:13<00:23,  3.62it/s] 20%|██        | 20/100 [00:14<00:15,  5.31it/s] 24%|██▍       | 24/100 [00:14<00:10,  7.24it/s] 32%|███▏      | 32/100 [00:14<00:05, 12.08it/s] 48%|████▊     | 48/100 [00:14<00:01, 26.24it/s] 55%|█████▌    | 55/100 [00:14<00:01, 27.10it/s] 61%|██████    | 61/100 [00:14<00:01, 31.09it/s] 72%|███████▏  | 72/100 [00:15<00:00, 36.09it/s] 78%|███████▊  | 78/100 [00:15<00:00, 37.73it/s] 85%|████████▌ | 85/100 [00:15<00:00, 33.94it/s] 97%|█████████▋| 97/100 [00:15<00:00, 47.32it/s]100%|██████████| 100/100 [00:15<00:00,  6.37it/s]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [105513]
+[rank0]:[W928 18:28:55.460232700 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W928 18:28:55.493271798 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua040:104404:0:104404] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fb2544b1830)
+[rank0]:[W928 18:28:55.627987184 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua040:104395:0:104395] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fea58fe8830)
+[gpua040:104417:0:104417] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7f16e8092830)
+[1;36m(APIServer pid=103921)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=103921)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=103921)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=103916)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=103916)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=103916)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=103927)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=103927)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=103927)[0;0m INFO:     Application shutdown complete.
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[1;36m(APIServer pid=106586)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=106415)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=106339)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[1;36m(APIServer pid=106592)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[1;36m(EngineCore_DP0 pid=107118)[0;0m W0928 18:30:59.479000 107118 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+[1;36m(EngineCore_DP0 pid=107118)[0;0m W0928 18:30:59.479000 107118 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[1;36m(EngineCore_DP0 pid=107117)[0;0m W0928 18:30:59.483000 107117 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+[1;36m(EngineCore_DP0 pid=107117)[0;0m W0928 18:30:59.483000 107117 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[W928 18:31:02.879440434 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W928 18:31:03.572314191 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=107130)[0;0m W0928 18:31:04.806000 107130 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+[1;36m(EngineCore_DP0 pid=107130)[0;0m W0928 18:31:04.806000 107130 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[1;36m(EngineCore_DP0 pid=107118)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[W928 18:31:09.597920931 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=107117)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=107147)[0;0m W0928 18:31:11.976000 107147 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+[1;36m(EngineCore_DP0 pid=107147)[0;0m W0928 18:31:11.976000 107147 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[1;36m(EngineCore_DP0 pid=107130)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[W928 18:31:19.892544040 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=107147)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=107118)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:25<01:17, 25.76s/it]
+[1;36m(EngineCore_DP0 pid=107117)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:23<01:09, 23.18s/it]
+[1;36m(EngineCore_DP0 pid=107130)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:16<00:49, 16.47s/it]
+[1;36m(EngineCore_DP0 pid=107147)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:18<00:54, 18.26s/it]
+[1;36m(EngineCore_DP0 pid=107118)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:44<00:43, 21.77s/it]
+[1;36m(EngineCore_DP0 pid=107130)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:35<00:35, 17.88s/it]
+[1;36m(EngineCore_DP0 pid=107117)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:42<00:42, 21.18s/it]
+[1;36m(EngineCore_DP0 pid=107147)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:37<00:37, 18.77s/it]
+[1;36m(EngineCore_DP0 pid=107118)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [01:03<00:20, 20.49s/it]
+[1;36m(EngineCore_DP0 pid=107130)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:53<00:18, 18.10s/it]
+[1;36m(EngineCore_DP0 pid=107117)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [01:01<00:19, 19.95s/it]
+[1;36m(EngineCore_DP0 pid=107117)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:09<00:00, 15.20s/it]
+[1;36m(EngineCore_DP0 pid=107117)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:09<00:00, 17.34s/it]
+[1;36m(EngineCore_DP0 pid=107117)[0;0m 
+[1;36m(EngineCore_DP0 pid=107130)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:01<00:00, 14.18s/it]
+[1;36m(EngineCore_DP0 pid=107130)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:01<00:00, 15.48s/it]
+[1;36m(EngineCore_DP0 pid=107130)[0;0m 
+[1;36m(EngineCore_DP0 pid=107118)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:12<00:00, 15.77s/it]
+[1;36m(EngineCore_DP0 pid=107118)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:12<00:00, 18.06s/it]
+[1;36m(EngineCore_DP0 pid=107118)[0;0m 
+[1;36m(EngineCore_DP0 pid=107147)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:56<00:18, 18.87s/it]
+[1;36m(EngineCore_DP0 pid=107147)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:01<00:00, 13.42s/it]
+[1;36m(EngineCore_DP0 pid=107147)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:01<00:00, 15.36s/it]
+[1;36m(EngineCore_DP0 pid=107147)[0;0m 
+[1;36m(APIServer pid=106339)[0;0m INFO:     Started server process [106339]
+[1;36m(APIServer pid=106339)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=106586)[0;0m INFO:     Started server process [106586]
+[1;36m(APIServer pid=106586)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=106415)[0;0m INFO:     Started server process [106415]
+[1;36m(APIServer pid=106415)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=106339)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=106586)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=106415)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=106592)[0;0m INFO:     Started server process [106592]
+[1;36m(APIServer pid=106592)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=106592)[0;0m INFO:     Application startup complete.
+INFO:     Started server process [108380]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:8192 (Press CTRL+C to quit)
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:10 elapsed, 14:50:12 remaining
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:11<01:45, 11.70s/it] 20%|██        | 2/10 [00:12<00:40,  5.04s/it] 40%|████      | 4/10 [00:13<00:13,  2.17s/it] 70%|███████   | 7/10 [00:13<00:02,  1.02it/s] 80%|████████  | 8/10 [00:13<00:01,  1.23it/s] 90%|█████████ | 9/10 [00:13<00:00,  1.48it/s]100%|██████████| 10/10 [00:13<00:00,  1.38s/it]
+/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+ |          | 00:00 elapsed, ? remaining |          | 00:00 elapsed, 00:00 remaining |          | 00:08 elapsed, 7:39:08 remaining
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:16<28:01, 16.98s/it]  2%|▏         | 2/100 [00:17<11:33,  7.07s/it]  3%|▎         | 3/100 [00:17<06:20,  3.93s/it] 23%|██▎       | 23/100 [00:17<00:22,  3.48it/s] 40%|████      | 40/100 [00:17<00:08,  7.08it/s] 50%|█████     | 50/100 [00:17<00:05,  9.86it/s] 66%|██████▌   | 66/100 [00:17<00:02, 15.78it/s] 75%|███████▌  | 75/100 [00:18<00:01, 19.40it/s] 99%|█████████▉| 99/100 [00:18<00:00, 35.06it/s]100%|██████████| 100/100 [00:18<00:00,  5.50it/s]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [108380]
+[rank0]:[W928 18:35:43.607493389 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W928 18:35:43.710059308 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua040:107118:0:107118] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fb1104b3830)
+[rank0]:[W928 18:35:43.811392297 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W928 18:35:43.829112234 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua040:107117:0:107117] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fcc1ff28830)
+[gpua040:107130:0:107130] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fe10e45e830)
+[gpua040:107147:0:107147] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7ff280fec830)
+[1;36m(APIServer pid=106415)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=106415)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=106415)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=106586)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=106586)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=106586)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=106339)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=106339)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=106339)[0;0m INFO:     Application shutdown complete.
+[1;36m(APIServer pid=106592)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=106592)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=106592)[0;0m INFO:     Application shutdown complete.

@@ -1,0 +1,189 @@
+[1;36m(APIServer pid=792851)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=792857)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=792851)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=792857)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[W925 12:39:26.236331156 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[W925 12:39:26.236398492 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[1;36m(EngineCore_DP0 pid=793330)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=793334)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=793334)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:21<00:42, 21.05s/it]
+[1;36m(EngineCore_DP0 pid=793330)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:21<00:42, 21.42s/it]
+[1;36m(EngineCore_DP0 pid=793334)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:53<00:27, 27.70s/it]
+[1;36m(EngineCore_DP0 pid=793330)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:53<00:27, 27.88s/it]
+[1;36m(EngineCore_DP0 pid=793330)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:25<00:00, 29.53s/it]
+[1;36m(EngineCore_DP0 pid=793330)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:25<00:00, 28.44s/it]
+[1;36m(EngineCore_DP0 pid=793330)[0;0m 
+[1;36m(EngineCore_DP0 pid=793334)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:24<00:00, 29.47s/it]
+[1;36m(EngineCore_DP0 pid=793334)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [01:24<00:00, 28.33s/it]
+[1;36m(EngineCore_DP0 pid=793334)[0;0m 
+[1;36m(EngineCore_DP0 pid=793330)[0;0m Process EngineCore_DP0:
+[1;36m(EngineCore_DP0 pid=793330)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     self.run()
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     self._target(*self._args, **self._kwargs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 722, in run_engine_core
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     raise e
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 709, in run_engine_core
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     engine_core = EngineCoreProc(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 505, in __init__
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     super().__init__(vllm_config, executor_class, log_stats,
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 91, in __init__
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     self._initialize_kv_caches(vllm_config)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 183, in _initialize_kv_caches
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     self.model_executor.determine_available_memory())
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/executor/abstract.py", line 84, in determine_available_memory
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     return self.collective_rpc("determine_available_memory")
+[1;36m(EngineCore_DP0 pid=793330)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/executor/uniproc_executor.py", line 58, in collective_rpc
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     answer = run_method(self.driver_worker, method, args, kwargs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/utils/__init__.py", line 3060, in run_method
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     return func(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     return func(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 263, in determine_available_memory
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     self.model_runner.profile_run()
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 3031, in profile_run
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     = self._dummy_run(self.max_num_tokens, is_profile=True)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     return func(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 2809, in _dummy_run
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     outputs = self.model(
+[1;36m(EngineCore_DP0 pid=793330)[0;0m               ^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     return self._call_impl(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     return forward_call(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/model_executor/models/llama.py", line 597, in forward
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     model_output = self.model(input_ids, positions, intermediate_tensors,
+[1;36m(EngineCore_DP0 pid=793330)[0;0m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/compilation/decorators.py", line 305, in __call__
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     output = self.compiled_callable(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 749, in compile_wrapper
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     raise e.remove_dynamo_frames() from None  # see TORCHDYNAMO_VERBOSE=1
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/_dynamo/output_graph.py", line 1871, in _call_user_compiler
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     raise BackendCompilerFailed(
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/_dynamo/output_graph.py", line 1846, in _call_user_compiler
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     compiled_fn = compiler_fn(gm, example_inputs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/_dynamo/repro/after_dynamo.py", line 150, in __call__
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     compiled_gm = compiler_fn(gm, example_inputs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/__init__.py", line 2425, in __call__
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     return self.compiler_fn(model_, inputs_, **self.kwargs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/compilation/backends.py", line 579, in __call__
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     PiecewiseCompileInterpreter(self.split_gm, submod_names_to_compile,
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/compilation/backends.py", line 314, in run
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     return super().run(*fake_args)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/fx/interpreter.py", line 173, in run
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     self.env[node] = self.run_node(node)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m                      ^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/fx/interpreter.py", line 242, in run_node
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     return getattr(self, n.op)(n.target, args, kwargs)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/compilation/backends.py", line 330, in call_module
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     compiler_manager.compile(
+[1;36m(EngineCore_DP0 pid=793330)[0;0m                      ^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/compilation/backends.py", line 179, in compile
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     compiled_graph, handle = self.compiler.compile(
+[1;36m(EngineCore_DP0 pid=793330)[0;0m                              ^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/compilation/compiler_interface.py", line 217, in compile
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     compiled_graph.save(path=path, format="unpacked")
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/_inductor/standalone_compile.py", line 100, in save
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     loaded_cache_info = torch.compiler.load_cache_artifacts(
+[1;36m(EngineCore_DP0 pid=793330)[0;0m                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/compiler/__init__.py", line 513, in load_cache_artifacts
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     return CacheArtifactManager.populate_caches(artifacts)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/compiler/_cache.py", line 305, in populate_caches
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     artifact.populate_cache()
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/_inductor/runtime/autotune_cache.py", line 98, in populate_cache
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     autotune_cache._put(key, self.content)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/torch/_inductor/runtime/autotune_cache.py", line 600, in _put
+[1;36m(EngineCore_DP0 pid=793330)[0;0m     os.makedirs(os.path.dirname(key), exist_ok=True)
+[1;36m(EngineCore_DP0 pid=793330)[0;0m   File "<frozen os>", line 225, in makedirs
+[1;36m(EngineCore_DP0 pid=793330)[0;0m torch._dynamo.exc.BackendCompilerFailed: backend='<vllm.compilation.backends.VllmBackend object at 0x7fcaf43c7ce0>' raised:
+[1;36m(EngineCore_DP0 pid=793330)[0;0m FileNotFoundError: [Errno 2] No such file or directory: '/u/kramesh/.cache/vllm/torch_compile_cache/062ed807c0/rank_0_0/backbone/artifact_shape_None_subgraph_0/hg'
+[1;36m(EngineCore_DP0 pid=793330)[0;0m 
+[1;36m(EngineCore_DP0 pid=793330)[0;0m Set TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"
+[1;36m(EngineCore_DP0 pid=793330)[0;0m 
+[rank0]:[W925 12:41:45.588308699 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[gpua035:793330:0:793330] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fcb04608830)
+[1;36m(APIServer pid=792857)[0;0m Traceback (most recent call last):
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/bin/vllm", line 10, in <module>
+[1;36m(APIServer pid=792857)[0;0m     sys.exit(main())
+[1;36m(APIServer pid=792857)[0;0m              ^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/cli/main.py", line 54, in main
+[1;36m(APIServer pid=792857)[0;0m     args.dispatch_function(args)
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/cli/serve.py", line 50, in cmd
+[1;36m(APIServer pid=792857)[0;0m     uvloop.run(run_server(args))
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/uvloop/__init__.py", line 109, in run
+[1;36m(APIServer pid=792857)[0;0m     return __asyncio.run(
+[1;36m(APIServer pid=792857)[0;0m            ^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+[1;36m(APIServer pid=792857)[0;0m     return runner.run(main)
+[1;36m(APIServer pid=792857)[0;0m            ^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+[1;36m(APIServer pid=792857)[0;0m     return self._loop.run_until_complete(task)
+[1;36m(APIServer pid=792857)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/uvloop/__init__.py", line 61, in wrapper
+[1;36m(APIServer pid=792857)[0;0m     return await main
+[1;36m(APIServer pid=792857)[0;0m            ^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 1941, in run_server
+[1;36m(APIServer pid=792857)[0;0m     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 1961, in run_server_worker
+[1;36m(APIServer pid=792857)[0;0m     async with build_async_engine_client(
+[1;36m(APIServer pid=792857)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+[1;36m(APIServer pid=792857)[0;0m     return await anext(self.gen)
+[1;36m(APIServer pid=792857)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 179, in build_async_engine_client
+[1;36m(APIServer pid=792857)[0;0m     async with build_async_engine_client_from_engine_args(
+[1;36m(APIServer pid=792857)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+[1;36m(APIServer pid=792857)[0;0m     return await anext(self.gen)
+[1;36m(APIServer pid=792857)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 221, in build_async_engine_client_from_engine_args
+[1;36m(APIServer pid=792857)[0;0m     async_llm = AsyncLLM.from_vllm_config(
+[1;36m(APIServer pid=792857)[0;0m                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/utils/__init__.py", line 1589, in inner
+[1;36m(APIServer pid=792857)[0;0m     return fn(*args, **kwargs)
+[1;36m(APIServer pid=792857)[0;0m            ^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 212, in from_vllm_config
+[1;36m(APIServer pid=792857)[0;0m     return cls(
+[1;36m(APIServer pid=792857)[0;0m            ^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 136, in __init__
+[1;36m(APIServer pid=792857)[0;0m     self.engine_core = EngineCoreClient.make_async_mp_client(
+[1;36m(APIServer pid=792857)[0;0m                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 102, in make_async_mp_client
+[1;36m(APIServer pid=792857)[0;0m     return AsyncMPClient(*client_args)
+[1;36m(APIServer pid=792857)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 769, in __init__
+[1;36m(APIServer pid=792857)[0;0m     super().__init__(
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 448, in __init__
+[1;36m(APIServer pid=792857)[0;0m     with launch_core_engines(vllm_config, executor_class,
+[1;36m(APIServer pid=792857)[0;0m          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=792857)[0;0m   File "/u/kramesh/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 144, in __exit__
+[1;36m(APIServer pid=792857)[0;0m     next(self.gen)
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 729, in launch_core_engines
+[1;36m(APIServer pid=792857)[0;0m     wait_for_engine_startup(
+[1;36m(APIServer pid=792857)[0;0m   File "/work/nvme/bcjw/kramesh/uv/vllm/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 782, in wait_for_engine_startup
+[1;36m(APIServer pid=792857)[0;0m     raise RuntimeError("Engine core initialization failed. "
+[1;36m(APIServer pid=792857)[0;0m RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[1;36m(EngineCore_DP0 pid=793334)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/67 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   1%|▏         | 1/67 [00:00<00:52,  1.26it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   3%|▎         | 2/67 [00:00<00:26,  2.41it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 3/67 [00:01<00:19,  3.31it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 4/67 [00:01<00:14,  4.35it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   7%|▋         | 5/67 [00:01<00:11,  5.31it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   9%|▉         | 6/67 [00:01<00:10,  5.81it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  10%|█         | 7/67 [00:01<00:09,  6.42it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 8/67 [00:01<00:08,  7.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  13%|█▎        | 9/67 [00:01<00:07,  7.82it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  15%|█▍        | 10/67 [00:01<00:07,  7.33it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▋        | 11/67 [00:02<00:07,  7.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  19%|█▉        | 13/67 [00:02<00:06,  7.89it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  21%|██        | 14/67 [00:02<00:06,  8.20it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  22%|██▏       | 15/67 [00:02<00:06,  7.76it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▍       | 16/67 [00:02<00:06,  7.54it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 18/67 [00:02<00:05,  8.33it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  28%|██▊       | 19/67 [00:03<00:05,  8.46it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  30%|██▉ slurmstepd: error: *** JOB 12445761 ON gpua035 CANCELLED AT 2025-09-25T12:43:20 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+      | 20/67 [00:03<00:05,  8.78it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 21/67 [00:03<00:05,  9.06it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  33%|███▎      | 22/67 [00:03<00:04,  9.27it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  36%|███▌      | 24/67 [00:03<00:04, 10.05it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|███▋      | 25/67 [00:03<00:04,  9.89it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  40%|████      | 27/67 [00:03<00:04,  9.60it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 29/67 [00:04<00:03, 10.20it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  46%|████▋     | 31/67 [00:04<00:04,  8.97it/s]slurmstepd: error: *** STEP 12445761.0 ON gpua035 CANCELLED AT 2025-09-25T12:43:20 ***

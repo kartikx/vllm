@@ -61,6 +61,15 @@ async def lifespan(app: FastAPI):
     app.state.decode_iterator = itertools.cycle(
         range(len(app.state.decode_clients)))
 
+    print("PREFILL INSTANCES")
+    for client in app.state.prefill_clients:
+        print(client["host"], client["port"])
+
+    print("DECODE INSTANCES")
+    for client in app.state.decode_clients:
+        print(client["host"], client["port"])
+
+
     print(f"Initialized {len(app.state.prefill_clients)} prefill clients "
           f"and {len(app.state.decode_clients)} decode clients.")
 
@@ -84,40 +93,19 @@ def parse_args():
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument("--host", type=str, default="localhost")
 
-    # For prefiller instances
-    parser.add_argument("--prefiller-hosts",
-                        "--prefiller-host",
-                        type=str,
-                        nargs="+",
-                        default=["localhost"])
-    parser.add_argument("--prefiller-ports",
-                        "--prefiller-port",
-                        type=int,
-                        nargs="+",
-                        default=[8100])
-
-    # For decoder instances
-    parser.add_argument("--decoder-hosts",
-                        "--decoder-host",
-                        type=str,
-                        nargs="+",
-                        default=["localhost"])
-    parser.add_argument("--decoder-ports",
-                        "--decoder-port",
-                        type=int,
-                        nargs="+",
-                        default=[8200])
+    parser.add_argument("--prefill-count", type=int, default=1)
+    parser.add_argument("--decode-count", type=int, default=1)
+    parser.add_argument("--worker-ports", type=str, nargs="+", default=[])
 
     args = parser.parse_args()
 
-    # Validate and pair hosts with ports
-    if len(args.prefiller_hosts) != len(args.prefiller_ports):
-        raise ValueError(
-            "Number of prefiller hosts must match number of prefiller ports")
+    if (len(args.worker_ports) < args.prefill_count + args.decode_count):
+        raise ValueError("Insufficient workers specified")
 
-    if len(args.decoder_hosts) != len(args.decoder_ports):
-        raise ValueError(
-            "Number of decoder hosts must match number of decoder ports")
+    args.prefiller_hosts = ["localhost" for _ in range(args.prefill_count)]
+    args.decoder_hosts = ["localhost" for _ in range(args.decode_count)]
+    args.prefiller_ports = args.worker_ports[:args.prefill_count]
+    args.decoder_ports = args.worker_ports[args.prefill_count: args.prefill_count + args.decode_count]
 
     # Create tuples of (host, port) for each service type
     args.prefiller_instances = list(

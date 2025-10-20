@@ -209,14 +209,18 @@ async def _handle_completions(api: str, request: Request):
         request_id = str(uuid.uuid4())
 
         # Get the next prefill client in round-robin fashion
+        start_time = datetime.now()
         prefill_client_info = get_next_client(request.app, 'prefill')
+        end_time = datetime.now()
+        time_taken = (end_time - start_time).total_seconds()
+        # print(f"Selected prefill {prefill_client_info['port'] } in {time_taken} seconds")
 
         # Send request to prefill service
         start_time = datetime.now()
         response = await send_request_to_service(prefill_client_info, api,
                                                  req_data, request_id)
-        end_time = datetime.now()
 
+        end_time = datetime.now()
         time_taken = (end_time - start_time).total_seconds()
         print(f"Time taken for prefill request: {time_taken} seconds")
 
@@ -226,7 +230,7 @@ async def _handle_completions(api: str, request: Request):
         # print("Response from Prefill: ")
         # pprint.pprint(response_json)
         
-        print("-" * 80)
+        # print("-" * 80)
 
         # Safely extract the first token from the response
         choices = response_json.get('choices', [])
@@ -271,7 +275,10 @@ async def _handle_completions(api: str, request: Request):
                 req_data["kv_transfer_params"] = kv_transfer_params
 
             # Get the next decode client in round-robin fashion
+            start_time = datetime.now()
             decode_client_info = get_next_client(request.app, 'decode')
+            time_taken = (datetime.now() - start_time).total_seconds()
+            # print(f"Selected decode {decode_client_info['port'] } in {time_taken} seconds")
 
             # Stream the remaining tokens, skipping the first token
             # first_decode_chunk = False
